@@ -65,15 +65,10 @@ settings:
 }
 
 body {
-  --code-font-family: "CascadiaCode", "Lucida Console", Consolas, Courier, monospace;
   --code-size: 0.95rem;
   --code-white-space: pre;
   --code-radius: 8px;
   --file-line-width: 920px;
-  --font-interface-theme: "HarmonyOS_Sans_SC", "Microsoft YaHei", sans-serif;
-  --font-interface: var(--font-interface-theme);
-  --font-monospace-theme: "CascadiaCode", Consolas, monospace;
-  --font-monospace: var(--font-monospace-theme);
   --checkbox-size: 1.25rem;
   --checkmark-color: #ffffff;
   --table-border-radius: 8px;
@@ -434,7 +429,7 @@ body.theme-light.theme-light-cheery {
   --h2-shadow-color: rgba(170, 17, 65, 0.15);
   --h2-shadow-hover: rgba(170, 17, 65, 0.35);
   --text-bold: var(--light-deep);
-  --code-background: rgba(177, 108, 108, 0.15);
+  --code-background: rgb(177 108 108 / 2%);
   --code-normal: #9a0000;
   --code-normal: #4a0d18;
   --code-string: #2e7d32;
@@ -602,7 +597,6 @@ body.theme-dark {
 .markdown-preview-view h5,
 .markdown-preview-view h6,
 .markdown-source-view.mod-cm6 .HyperMD-header {
-  font-family: var(--font-interface), HarmonyOS_Sans_SC, "Microsoft YaHei", sans-serif !important;
   color: var(--text-color);
   font-weight: 700;
   position: relative;
@@ -610,7 +604,7 @@ body.theme-dark {
 }
 
 .markdown-preview-view .heading-collapse-indicator {
-  margin-inline-start: -42px !important
+  margin-inline-start: -32px !important
 }
 
 .markdown-preview-view h2 .heading-collapse-indicator {
@@ -619,6 +613,10 @@ body.theme-dark {
 
 .markdown-preview-view h3 .heading-collapse-indicator {
   margin-inline-start: -47px !important
+}
+
+.markdown-source-view.mod-cm6 .cm-fold-indicator .collapse-indicator {
+  inset-inline-end: 22px
 }
 
 .theme-light .markdown-preview-view h1 {
@@ -1058,7 +1056,6 @@ body.theme-dark {
 }
 
 .markdown-source-view.mod-cm6 .HyperMD-header {
-  font-family: var(--font-interface), HarmonyOS_Sans_SC, "Microsoft YaHei", sans-serif !important;
   font-weight: 700;
   line-height: 1.4;
   position: relative;
@@ -1537,6 +1534,18 @@ body.theme-dark {
   color: #888 !important;
   opacity: .8;
   text-decoration-color: var(--text-color-secondary) !important
+}
+
+.markdown-preview-view .task-list-item.is-checked code,
+.markdown-preview-view .task-list-item.is-checked em,
+.markdown-preview-view .task-list-item.is-checked mark,
+.markdown-preview-view .task-list-item.is-checked p,
+.markdown-preview-view .task-list-item.is-checked strong {
+  text-decoration: line-through !important;
+  text-decoration-color: var(--text-color-secondary) !important;
+  text-decoration-thickness: 2px !important;
+  color: inherit !important;
+  opacity: 1 !important
 }
 
 .theme-dark .markdown-preview-view blockquote {
@@ -2198,7 +2207,7 @@ body.theme-light .markdown-preview-view s:hover {
 }
 
 .theme-light .markdown-source-view.mod-cm6 .HyperMD-codeblock {
-  background-color: var(--code-block-bg, #fff) !important;
+  background-color: var(--code-background) !important;
   --code-border-color: color-mix(in srgb, var(--primary-color), transparent 85%);
   border-left: 1px solid var(--code-border-color);
   border-right: 1px solid var(--code-border-color);
@@ -2314,289 +2323,276 @@ body.theme-light .markdown-preview-view s:hover {
 }
 
 .callout {
-  padding: 12px 16px;
-  margin-bottom: 16px;
-  border: 1px solid transparent;
-  border-radius: 12px;
-  position: relative;
-  overflow: hidden;
+  padding: 12px 16px !important;
+  margin-block: 1em !important;
+  border: none !important;
+  border-radius: 12px !important;
+  position: relative !important;
+  overflow: hidden !important;
   mix-blend-mode: normal;
-  transition: transform .3s cubic-bezier(.34, 1.56, .64, 1), box-shadow .3s ease, border-color .3s ease, background-color .3s ease
-}
-
-.callout-title {
-  display: inline-flex;
-  align-items: center;
-  margin-bottom: 8px;
-  font-weight: 700;
-  font-size: 14px;
-  position: relative;
-  z-index: 2;
-  background-color: rgba(255, 255, 255, .06);
-  border: 1px solid rgba(255, 255, 255, .1);
-  padding: 4px 10px;
-  border-radius: 50px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
-  color: inherit
-}
-
-.callout-icon {
-  display: none !important
-}
-
-.callout-title::before {
-  content: "✏️";
-  display: inline-block;
-  margin-right: 8px;
-  font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
-  font-style: normal;
-  font-size: 1.1em;
-  line-height: 1;
-  color: inherit;
-  opacity: 1
-}
-
-.callout[data-callout=note] {
-  --rgb-color: 53, 120, 246;
-  --callout-color: rgb(var(--rgb-color));
-  background-color: rgba(var(--rgb-color), .05);
-  border-color: rgba(var(--rgb-color), .3);
-  color: var(--callout-color)
-}
-
-.callout[data-callout=note] .callout-title::before {
-  content: "📝"
-}
-
-.callout[data-callout=note]::after {
-  content: "📝";
-  color: var(--callout-color)
-}
-
-.callout[data-callout=important],
-.callout[data-callout=info],
-.callout[data-callout=tip],
-.callout[data-callout=todo] {
-  --rgb-color: 124, 220, 220;
-  --callout-color: rgb(var(--rgb-color));
-  background-color: rgba(var(--rgb-color), .05);
-  border-color: rgba(var(--rgb-color), .3);
-  color: var(--callout-color)
-}
-
-.callout[data-callout=important] .callout-title::before {
-  content: "🔥"
-}
-
-.callout[data-callout=tip] .callout-title::before {
-  content: "💡"
-}
-
-.callout[data-callout=info] .callout-title::before {
-  content: "ℹ️"
-}
-
-.callout[data-callout=todo] .callout-title::before {
-  content: "✅"
-}
-
-.callout[data-callout=important]::after {
-  content: "🔥";
-  color: var(--callout-color)
-}
-
-.callout[data-callout=tip]::after {
-  content: "💡";
-  color: var(--callout-color)
-}
-
-.callout[data-callout=bug],
-.callout[data-callout=caution],
-.callout[data-callout=fail],
-.callout[data-callout=missing],
-.callout[data-callout=warning] {
-  --rgb-color: 221, 155, 81;
-  --callout-color: rgb(var(--rgb-color));
-  background-color: rgba(var(--rgb-color), .05);
-  border-color: rgba(var(--rgb-color), .3);
-  color: var(--callout-color)
-}
-
-.callout[data-callout=caution] .callout-title::before {
-  content: "💀"
-}
-
-.callout[data-callout=warning] .callout-title::before {
-  content: "⚠️"
-}
-
-.callout[data-callout=bug] .callout-title::before {
-  content: "🪲"
-}
-
-.callout[data-callout=warning]::after {
-  content: "⚠️";
-  color: var(--callout-color)
-}
-
-.callout[data-callout=caution]::after {
-  content: "💀";
-  color: var(--callout-color)
-}
-
-.callout[data-callout=done],
-.callout[data-callout=success] {
-  --rgb-color: 80, 250, 123;
-  --callout-color: rgb(var(--rgb-color));
-  background-color: rgba(var(--rgb-color), .05);
-  border-color: rgba(var(--rgb-color), .3);
-  color: var(--callout-color)
-}
-
-.callout[data-callout=success] .callout-title::before {
-  content: "✅"
-}
-
-.callout[data-callout=done] .callout-title::before {
-  content: "🎉"
-}
-
-.callout[data-callout=success]::after {
-  content: "✅";
-  color: var(--callout-color)
-}
-
-.callout::after {
-  content: "";
-  position: absolute;
-  right: -10px;
-  bottom: -15px;
-  font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
-  font-size: 64px;
-  line-height: 1;
-  opacity: .15;
-  transform: rotate(-15deg);
-  pointer-events: none;
-  z-index: 0;
-  filter: grayscale(100%);
-  text-shadow: 0 0 10px currentColor;
-  transition: all .4s ease
+  transition: transform .3s cubic-bezier(.34, 1.56, .64, 1), box-shadow .3s ease, background-color .3s ease !important
 }
 
 .callout:hover {
-  transform: scale(1.01) translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, .2);
-  z-index: 1
+  z-index: 5
+}
+
+.callout-title {
+  display: inline-flex !important;
+  align-items: center;
+  margin-bottom: 12px !important;
+  padding: 4px 12px !important;
+  border-radius: 50px !important;
+  font-weight: 700;
+  font-size: .9em;
+  line-height: 1.2;
+  color: inherit !important;
+  background-color: rgba(255, 255, 255, .6) !important;
+  border: 1px solid rgba(0, 0, 0, .05) !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .05);
+  position: relative;
+  z-index: 2
+}
+
+.callout-icon {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px !important;
+  flex: 0 0 auto !important;
+  color: currentColor !important
+}
+
+.callout-icon svg {
+  width: 16px !important;
+  height: 16px !important;
+  display: block !important;
+  opacity: 1 !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  stroke-width: 2px
+}
+
+.callout::after {
+  content: "✨";
+  position: absolute !important;
+  right: -10px !important;
+  bottom: -15px !important;
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
+  font-size: 80px !important;
+  line-height: 1;
+  opacity: .12 !important;
+  transform: rotate(-15deg);
+  filter: grayscale(100%);
+  pointer-events: none;
+  z-index: 0;
+  transition: all .4s cubic-bezier(.34, 1.56, .64, 1) !important
 }
 
 .callout:hover::after {
-  transform: rotate(0) scale(1.1);
-  opacity: .25;
-  right: 5px;
-  bottom: -5px;
-  filter: grayscale(0);
-  text-shadow: 0 0 25px currentColor
+  transform: rotate(0) scale(1.1) !important;
+  opacity: .25 !important;
+  right: 0 !important;
+  bottom: -5px !important;
+  filter: grayscale(0) !important
 }
 
 .callout-content {
   position: relative;
-  z-index: 2;
-  color: var(--text-normal)
+  z-index: 2
 }
 
-.callout[data-callout=note] {
-  --rgb-color: 53, 120, 246;
-  --callout-color: rgb(var(--rgb-color));
-  --callout-icon: rgb(var(--rgb-color));
-  border-color: rgba(var(--rgb-color), .3);
-  background-color: rgba(var(--rgb-color), .05);
-  color: var(--callout-color)
+.theme-light .callout[data-callout=info],
+.theme-light .callout[data-callout=note],
+.theme-light .callout[data-callout=todo] {
+  background-color: rgba(108, 92, 231, .1) !important;
+  color: #6c5ce7 !important
 }
 
-.callout[data-callout=note]:hover {
-  box-shadow: 0 4px 20px rgba(var(--rgb-color), .15);
-  border-color: var(--callout-color)
+.theme-light .callout[data-callout=note] .callout-title {
+  color: #6c5ce7 !important
 }
 
-.callout[data-callout=note]::after {
+.theme-light .callout[data-callout=note]:hover {
+  background-color: rgba(108, 92, 231, .15) !important
+}
+
+.theme-light .callout[data-callout=note]::after {
   content: "📝";
-  color: var(--callout-color)
+  color: #6c5ce7
 }
 
-.callout[data-callout=important],
-.callout[data-callout=info],
-.callout[data-callout=tip] {
-  --rgb-color: 124, 220, 220;
-  --callout-color: rgb(var(--rgb-color));
-  --callout-icon: rgb(var(--rgb-color));
-  border-color: rgba(var(--rgb-color), .3);
-  background-color: rgba(var(--rgb-color), .05);
-  color: var(--callout-color)
+.theme-light .callout[data-callout=info]::after {
+  content: "ℹ️";
+  color: #6c5ce7
 }
 
-.callout[data-callout=important]:hover,
-.callout[data-callout=tip]:hover {
-  box-shadow: 0 4px 20px rgba(var(--rgb-color), .15);
-  border-color: var(--callout-color)
-}
-
-.callout[data-callout=important]::after {
-  content: "🔥";
-  color: var(--callout-color)
-}
-
-.callout[data-callout=tip]::after {
-  content: "💡";
-  color: var(--callout-color)
-}
-
-.callout[data-callout=caution],
-.callout[data-callout=warning] {
-  --rgb-color: 221, 155, 81;
-  --callout-color: rgb(var(--rgb-color));
-  --callout-icon: rgb(var(--rgb-color));
-  border-color: rgba(var(--rgb-color), .3);
-  background-color: rgba(var(--rgb-color), .05);
-  color: var(--callout-color)
-}
-
-.callout[data-callout=caution]:hover,
-.callout[data-callout=warning]:hover {
-  box-shadow: 0 4px 20px rgba(var(--rgb-color), .15);
-  border-color: var(--callout-color)
-}
-
-.callout[data-callout=caution]::after {
-  content: "💀";
-  color: var(--callout-color)
-}
-
-.callout[data-callout=warning]::after {
-  content: "⚠️";
-  color: var(--callout-color)
-}
-
-.callout[data-callout=done],
-.callout[data-callout=success] {
-  --rgb-color: 80, 250, 123;
-  --callout-color: rgb(var(--rgb-color));
-  --callout-icon: rgb(var(--rgb-color));
-  border-color: rgba(var(--rgb-color), .3);
-  background-color: rgba(var(--rgb-color), .05);
-  color: var(--callout-color)
-}
-
-.callout[data-callout=success]:hover {
-  box-shadow: 0 4px 20px rgba(var(--rgb-color), .15);
-  border-color: var(--callout-color)
-}
-
-.callout[data-callout=success]::after {
+.theme-light .callout[data-callout=todo]::after {
   content: "✅";
-  color: var(--callout-color)
+  color: #6c5ce7
 }
 
-.markdown-preview-view :not(pre)>code {
+.theme-light .callout[data-callout=tip] {
+  background-color: rgba(0, 184, 148, .1) !important;
+  color: #00b894 !important
+}
+
+.theme-light .callout[data-callout=tip] .callout-title {
+  color: #00b894 !important
+}
+
+.theme-light .callout[data-callout=tip]:hover {
+  background-color: rgba(0, 184, 148, .15) !important
+}
+
+.theme-light .callout[data-callout=tip]::after {
+  content: "💡";
+  color: #00b894
+}
+
+.theme-light .callout[data-callout=warning] {
+  background-color: rgba(253, 203, 110, .15) !important;
+  color: #e17055 !important
+}
+
+.theme-light .callout[data-callout=warning] .callout-title {
+  color: #e17055 !important
+}
+
+.theme-light .callout[data-callout=warning]:hover {
+  background-color: rgba(253, 203, 110, .2) !important
+}
+
+.theme-light .callout[data-callout=warning]::after {
+  content: "⚠️";
+  color: #e17055
+}
+
+.theme-light .callout[data-callout=important] {
+  background-color: rgba(255, 118, 117, .12) !important;
+  color: #ff7675 !important
+}
+
+.theme-light .callout[data-callout=important] .callout-title {
+  color: #ff7675 !important
+}
+
+.theme-light .callout[data-callout=important]:hover {
+  background-color: rgba(255, 118, 117, .18) !important
+}
+
+.theme-light .callout[data-callout=important]::after {
+  content: "📌";
+  color: #ff7675
+}
+
+.theme-light .callout[data-callout=bug],
+.theme-light .callout[data-callout=caution] {
+  background-color: rgba(214, 48, 49, .08) !important;
+  color: #d63031 !important
+}
+
+.theme-light .callout[data-callout=caution] .callout-title {
+  color: #d63031 !important
+}
+
+.theme-light .callout[data-callout=caution]:hover {
+  background-color: rgba(214, 48, 49, .12) !important
+}
+
+.theme-light .callout[data-callout=caution]::after {
+  content: "🔥";
+  color: #d63031
+}
+
+.theme-light .callout[data-callout=done],
+.theme-light .callout[data-callout=success] {
+  background-color: rgba(85, 239, 196, .15) !important;
+  color: #00b894 !important
+}
+
+.theme-light .callout[data-callout=success] .callout-title {
+  color: #00b894 !important
+}
+
+.theme-light .callout[data-callout=success]:hover {
+  background-color: rgba(85, 239, 196, .25) !important
+}
+
+.theme-light .callout[data-callout=success]::after {
+  content: "🎉";
+  color: #00b894
+}
+
+.theme-dark .callout {
+  background-color: rgba(255, 255, 255, .03) !important;
+  border: 1px solid rgba(255, 255, 255, .05) !important
+}
+
+.theme-dark .callout-title {
+  background-color: rgba(255, 255, 255, .08) !important;
+  border: 1px solid rgba(255, 255, 255, .1) !important;
+  color: var(--text-normal) !important
+}
+
+.theme-dark .callout[data-callout=note] {
+  border-color: rgba(189, 147, 249, .3) !important
+}
+
+.theme-dark .callout[data-callout=note] .callout-title {
+  color: #bd93f9 !important
+}
+
+.theme-dark .callout[data-callout=note]::after {
+  content: "📝";
+  color: #bd93f9
+}
+
+.theme-dark .callout[data-callout=tip] {
+  border-color: rgba(139, 233, 253, .3) !important
+}
+
+.theme-dark .callout[data-callout=tip] .callout-title {
+  color: #8be9fd !important
+}
+
+.theme-dark .callout[data-callout=tip]::after {
+  content: "💡";
+  color: #8be9fd
+}
+
+.theme-dark .callout[data-callout=warning] {
+  border-color: rgba(255, 184, 108, .3) !important
+}
+
+.theme-dark .callout[data-callout=warning] .callout-title {
+  color: #ffb86c !important
+}
+
+.theme-dark .callout[data-callout=warning]::after {
+  content: "⚠️";
+  color: #ffb86c
+}
+
+.theme-dark .callout[data-callout=important] {
+  border-color: rgba(255, 85, 85, .3) !important
+}
+
+.theme-dark .callout[data-callout=important] .callout-title {
+  color: #f55 !important
+}
+
+.theme-dark .callout[data-callout=important]::after {
+  content: "🔥";
+  color: #f55
+}
+
+.markdown-source-view.mod-cm6 .cm-embed-block:not(.cm-table-widget, .cm-lang-base):hover {
+  box-shadow: none
+}
+
+.markdown-preview-view :not(pre)>code,
+.markdown-source-view.mod-cm6 .cm-inline-code:not(.cm-formatting) {
   font-family: var(--font-monospace) !important;
   font-size: .9em !important;
   letter-spacing: .5px;
@@ -2607,7 +2603,9 @@ body.theme-light .markdown-preview-view s:hover {
   margin: 0 2px;
   border-radius: 6px;
   vertical-align: middle;
-  transition: all .2s cubic-bezier(.34, 1.56, .64, 1)
+  transition: all .2s cubic-bezier(.34, 1.56, .64, 1);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone
 }
 
 .markdown-preview-view :not(pre)>code:hover {
@@ -2617,12 +2615,20 @@ body.theme-light .markdown-preview-view s:hover {
   box-shadow: 0 0 15px color-mix(in srgb, var(--primary-color), transparent 60%);
   transform: scale(1.05);
   text-decoration: none !important;
-  -webkit-text-fill-color: #fff
+  -webkit-text-fill-color: #fff !important;
+  position: relative;
+  z-index: 1
+}
+
+.markdown-source-view.mod-cm6 .cm-formatting-code {
+  color: var(--primary-color) !important;
+  opacity: .4;
+  font-family: var(--font-monospace);
+  font-weight: 700
 }
 
 .markdown-preview-view kbd,
 .markdown-source-view.mod-cm6 .cm-kbd {
-  font-family: var(--font-monospace), CascadiaCode, Consolas, monospace;
   font-size: .9em;
   font-weight: 600;
   line-height: 1;
@@ -2718,7 +2724,6 @@ body.theme-light .markdown-source-view.mod-cm6 .cm-kbd:hover {
   background: 0 0 !important;
   border: none !important;
   box-shadow: none !important;
-  font-family: "Cascadia Code", "HarmonyOS Sans SC", sans-serif !important;
   font-size: 12px !important;
   line-height: 1.5 !important;
   font-weight: 500 !important
