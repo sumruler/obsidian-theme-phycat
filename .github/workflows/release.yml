@@ -3,7 +3,7 @@ name: Release Obsidian Theme
 on:
   push:
     tags:
-      - "v*" # 当推送以 'v' 开头的标签时触发 (例如 v1.0.0)
+      - "[0-9]*" # 当推送以数字开头的标签时触发 (例如 0.1.1)
 
 permissions:
   contents: write # 需要写入权限来创建 Release
@@ -61,8 +61,6 @@ jobs:
             1. 下载 `obsidian-phycat-theme-${{ env.VERSION }}.zip`。
             2. 解压得到 `Phycat` 文件夹。
             3. 将文件夹放入你的 `.obsidian/themes/` 目录下。
-            
-            *(自动生成)*
           files: |
             manifest.json
             theme.css
