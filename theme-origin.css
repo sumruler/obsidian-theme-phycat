@@ -147,7 +147,7 @@ body.theme-dark:not(.theme-dark-abyss):not(.theme-dark-radiation) {
   --accent-color: #8be9fd;
   --glow-color: rgba(255, 85, 85, 0.6);
   --hover-background-color: rgb(255, 85, 85);
-  --select-text-bg-color: rgba(68, 71, 90, 0.9);
+  --select-text-bg-color: rgba(255, 16, 16, 0.466);
   --link-hover-color: #ff92d0;
   --h1-color: var(--text-color);
   --h1-underline-color: var(--primary-color);
@@ -171,12 +171,12 @@ body.theme-dark.theme-dark-abyss {
   --text-color: #d6deeb;
   --text-color-secondary: #7e8c9f;
   --border-color: #1f2233;
-  --primary-color: #00f3ff;
-  --secondary-color: #2979ff;
+  --primary-color: #00b7c0;
+  --secondary-color: #2e8bd6;
   --accent-color: #d500f9;
   --glow-color: rgba(0, 243, 255, 0.5);
   --hover-background-color: #00f3ff;
-  --select-text-bg-color: rgba(0, 243, 255, 0.3);
+  --select-text-bg-color: rgba(7, 243, 255, 0.445);
   --link-hover-color: #82aaff;
   --h1-color: var(--text-color);
   --h1-underline-color: var(--primary-color);
@@ -434,7 +434,7 @@ body.theme-light.theme-light-cheery {
   --text-color: #333333;
   --text-color-secondary: #870e0e;
   --link-hover-color: #d81b60;
-  --select-text-bg-color: rgba(255, 64, 64, 0.2);
+  --select-text-bg-color: rgba(123, 123, 123, 0.507);
   --glow-color: rgba(170, 17, 65, 0.4);
   --border-color: color-mix(in srgb, var(--primary-color), transparent 75%);
   --h2-bg-gradient: linear-gradient(to right, #b41919, #ea68b6, #b41919);
@@ -505,7 +505,7 @@ body.theme-light {
   --list-marker-color: var(--primary-color);
   --interactive-accent: var(--primary-color);
   --interactive-accent-hover: var(--link-hover-color);
-  --text-selection: var(--select-text-bg-color);
+  --text-selection: #dce3e9b6;
   --background-modifier-hover: rgba(0, 0, 0, 0.05);
   --background-modifier-active-hover: rgba(0, 0, 0, 0.1);
   --background-modifier-border: var(--border-color);
@@ -1507,6 +1507,67 @@ body.theme-dark {
   border-color: var(--checkmark-color) !important
 }
 
+.markdown-preview-view .task-list-item[data-task="/"] {
+  color: var(--text-normal) !important;
+  text-decoration: none !important;
+  opacity: 1 !important
+}
+
+.markdown-preview-view .task-list-item[data-task="/"] p,
+.markdown-preview-view .task-list-item[data-task="/"] strong,
+.markdown-preview-view .task-list-item[data-task="/"] em,
+.markdown-preview-view .task-list-item[data-task="/"] code {
+  text-decoration: none !important;
+  color: inherit !important
+}
+
+.markdown-preview-view .task-list-item[data-task="/"] input[type="checkbox"]:checked::after {
+  content: "" !important;
+  border: none !important;
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  background-color: var(--checkmark-color) !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important
+}
+
+.markdown-preview-view .task-list-item[data-task="-"] {
+  color: var(--text-muted) !important;
+  text-decoration: line-through !important;
+  opacity: 0.7 !important
+}
+
+.markdown-preview-view .task-list-item[data-task="-"] strong,
+.markdown-preview-view .task-list-item[data-task="-"] em {
+  text-decoration: line-through !important;
+  color: inherit !important
+}
+
+.markdown-preview-view .task-list-item[data-task="-"] input[type="checkbox"]:checked::before {
+  background-color: var(--text-muted) !important;
+  border-color: var(--text-muted) !important;
+  box-shadow: none !important
+}
+
+.markdown-preview-view .task-list-item[data-task="-"] input[type="checkbox"]:checked::after {
+  content: "\2715" !important;
+  border: none !important;
+  transform: none !important;
+  background: transparent !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  height: 100% !important;
+  top: 0 !important;
+  left: 0 !important
+}
+
 @keyframes task-pulse {
   0% {
     transform: scale(1)
@@ -1823,7 +1884,8 @@ body.theme-dark .markdown-preview-view a.external-link:hover::before {
 }
 
 .markdown-preview-view mark,
-.markdown-source-view.mod-cm6 .cm-mark {
+.markdown-source-view.mod-cm6 mark,
+.markdown-source-view.mod-cm6 .cm-highlight {
   background-color: transparent !important;
   font-weight: bold;
   padding: 0 2px;
@@ -1838,8 +1900,10 @@ body.theme-dark .markdown-preview-view a.external-link:hover::before {
 
 .markdown-preview-view mark::before,
 .markdown-preview-view mark::after,
-.markdown-source-view.mod-cm6 .cm-mark::before,
-.markdown-source-view.mod-cm6 .cm-mark::after {
+.markdown-source-view.mod-cm6 mark::before,
+.markdown-source-view.mod-cm6 mark::after,
+.markdown-source-view.mod-cm6 .cm-highlight::before,
+.markdown-source-view.mod-cm6 .cm-highlight::after {
   position: absolute;
   top: 50%;
   transform: translateY(-50%) scale(0.5);
@@ -1851,7 +1915,8 @@ body.theme-dark .markdown-preview-view a.external-link:hover::before {
 }
 
 body.theme-dark .markdown-preview-view mark,
-body.theme-dark .markdown-source-view.mod-cm6 .cm-mark {
+body.theme-dark .markdown-source-view.mod-cm6 mark,
+body.theme-dark .markdown-source-view.mod-cm6 .cm-highlight {
   color: var(--secondary-color) !important;
   text-shadow: var(--glow-shadow-box);
   background-color: transparent !important
@@ -1859,13 +1924,16 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-mark {
 
 body.theme-dark .markdown-preview-view mark::before,
 body.theme-dark .markdown-preview-view mark::after,
-body.theme-dark .markdown-source-view.mod-cm6 .cm-mark::before,
-body.theme-dark .markdown-source-view.mod-cm6 .cm-mark::after {
+body.theme-dark .markdown-source-view.mod-cm6 mark::before,
+body.theme-dark .markdown-source-view.mod-cm6 mark::after,
+body.theme-dark .markdown-source-view.mod-cm6 .cm-highlight::before,
+body.theme-dark .markdown-source-view.mod-cm6 .cm-highlight::after {
   content: none !important
 }
 
 body.theme-dark .markdown-preview-view mark:hover,
-body.theme-dark .markdown-source-view.mod-cm6 .cm-mark:hover {
+body.theme-dark .markdown-source-view.mod-cm6 mark:hover,
+body.theme-dark .markdown-source-view.mod-cm6 .cm-highlight:hover {
   color: #fff !important;
   background-color: rgba(255, 85, 85, 0.2) !important;
   transform: scale(1.05);
@@ -1875,41 +1943,47 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-mark:hover {
 }
 
 body.theme-light .markdown-preview-view mark,
-body.theme-light .markdown-source-view.mod-cm6 .cm-mark {
+body.theme-light .markdown-source-view.mod-cm6 mark,
+body.theme-light .markdown-source-view.mod-cm6 .cm-highlight {
   background-color: color-mix(in srgb, var(--primary-color), transparent 88%) !important;
   color: var(--text-normal) !important;
   text-shadow: none
 }
 
 body.theme-light .markdown-preview-view mark::before,
-body.theme-light .markdown-source-view.mod-cm6 .cm-mark::before {
+body.theme-light .markdown-source-view.mod-cm6 mark::before,
+body.theme-light .markdown-source-view.mod-cm6 .cm-highlight::before {
   content:"{";
   left: -10px;
   color: var(--primary-color)
 }
 
 body.theme-light .markdown-preview-view mark::after,
-body.theme-light .markdown-source-view.mod-cm6 .cm-mark::after {
+body.theme-light .markdown-source-view.mod-cm6 mark::after,
+body.theme-light .markdown-source-view.mod-cm6 .cm-highlight::after {
   content: "}";
   right: -10px;
   color: var(--primary-color)
 }
 
 body.theme-light .markdown-preview-view mark:hover,
-body.theme-light .markdown-source-view.mod-cm6 .cm-mark:hover {
+body.theme-light .markdown-source-view.mod-cm6 mark:hover,
+body.theme-light .markdown-source-view.mod-cm6 .cm-highlight:hover {
   background-color: color-mix(in srgb, var(--primary-color), transparent 80%) !important;
   color: var(--primary-color) !important
 }
 
 body.theme-light .markdown-preview-view mark:hover::before,
-body.theme-light .markdown-source-view.mod-cm6 .cm-mark:hover::before {
+body.theme-light .markdown-source-view.mod-cm6 mark:hover::before,
+body.theme-light .markdown-source-view.mod-cm6 .cm-highlight:hover::before {
   opacity: 1;
   transform: translateY(-52%) scale(1.1);
   left: -6px
 }
 
 body.theme-light .markdown-preview-view mark:hover::after,
-body.theme-light .markdown-source-view.mod-cm6 .cm-mark:hover::after {
+body.theme-light .markdown-source-view.mod-cm6 mark:hover::after,
+body.theme-light .markdown-source-view.mod-cm6 .cm-highlight:hover::after {
   opacity: 1;
   transform: translateY(-52%) scale(1.1);
   right: -6px
