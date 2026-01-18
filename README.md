@@ -99,7 +99,7 @@ Phycat 针对开源字体 **LXGW WenKai (霞鹜文楷)** 进行了特别优化�
 
 > 🎨 **Design Philosophy**: Minimalist structure with maximum personality.
 
-![Theme Screenshot-hd](screenshot.png)
+![Theme Screenshot](screenshot-hd.png)
 
 ---
 
