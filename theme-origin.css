@@ -2954,8 +2954,7 @@ body.theme-dark .markdown-preview-view pre:not([class]) {
   font-family: var(--font-monospace) !important;
   line-height: 1.5;
   border-left: 1px solid var(--code-border-color, rgba(189, 147, 249, 0.3));
-  border-right: 1px solid var(--code-border-color, rgba(189, 147, 249, 0.3));
-  padding-left: 12px !important
+  border-right: 1px solid var(--code-border-color, rgba(189, 147, 249, 0.3))
 }
 
 .theme-dark .markdown-source-view.mod-cm6 .HyperMD-codeblock {
@@ -3139,7 +3138,7 @@ body.theme-dark .markdown-preview-view pre:not([class]) {
 .theme-light .callout[data-callout="note"],
 .theme-light .callout[data-callout="info"],
 .theme-light .callout[data-callout="todo"] {
-  background-color: rgba(108, 92, 231, 0.1) !important;
+  background-color: rgba(48, 107, 214, 0.1) !important;
   color: #6c5ce7 !important
 }
 
@@ -3258,6 +3257,133 @@ body.theme-dark .markdown-preview-view pre:not([class]) {
   color: #00b894
 }
 
+.theme-light .callout[data-callout="example"] {
+  background-color: rgba(162, 155, 254, 0.15) !important;
+  color: #6c5ce7 !important
+}
+
+.theme-light .callout[data-callout="example"] .callout-title {
+  color: #6c5ce7 !important
+}
+
+.theme-light .callout[data-callout="example"]:hover {
+  background-color: rgba(162, 155, 254, 0.25) !important
+}
+
+.theme-light .callout[data-callout="example"]::after {
+  content: "🧩";
+  color: #6c5ce7
+}
+
+.theme-light .callout[data-callout="quote"] {
+  background-color: rgba(178, 190, 195, 0.15) !important;
+  color: #636e72 !important
+}
+
+.theme-light .callout[data-callout="quote"] .callout-title {
+  color: #636e72 !important
+}
+
+.theme-light .callout[data-callout="quote"]:hover {
+  background-color: rgba(178, 190, 195, 0.25) !important
+}
+
+.theme-light .callout[data-callout="quote"]::after {
+  content: "💬";
+  color: #636e72
+}
+
+.theme-light .callout[data-callout="danger"],
+.theme-light .callout[data-callout="error"] {
+  background-color: rgba(214, 48, 49, 0.15) !important;
+  color: #d63031 !important;
+  border-left-color: #d63031 !important
+}
+
+.theme-light .callout[data-callout="danger"] .callout-title,
+.theme-light .callout[data-callout="error"] .callout-title {
+  color: #d63031 !important
+}
+
+.theme-light .callout[data-callout="danger"]:hover,
+.theme-light .callout[data-callout="error"]:hover {
+  background-color: rgba(214, 48, 49, 0.2) !important
+}
+
+.theme-light .callout[data-callout="danger"]::after {
+  content: "⚡";
+  color: #d63031
+}
+
+.theme-light .callout[data-callout="error"]::after {
+  content: "❌";
+  color: #d63031
+}
+
+.theme-light .callout[data-callout="bug"]::after {
+  content: "🐛";
+  color: #d63031
+}
+
+.theme-light .callout[data-callout="failure"],
+.theme-light .callout[data-callout="missing"] {
+  background-color: rgba(45, 52, 54, 0.05) !important;
+  color: #c0392b !important
+}
+
+.theme-light .callout[data-callout="failure"] .callout-title {
+  color: #c0392b !important
+}
+
+.theme-light .callout[data-callout="failure"]:hover {
+  background-color: rgba(45, 52, 54, 0.1) !important
+}
+
+.theme-light .callout[data-callout="failure"]::after {
+  content: "📉";
+  color: #c0392b
+}
+
+.theme-light .callout[data-callout="question"],
+.theme-light .callout[data-callout="faq"],
+.theme-light .callout[data-callout="help"] {
+  background-color: rgba(253, 203, 110, 0.15) !important;
+  color: #f39c12 !important
+}
+
+.theme-light .callout[data-callout="question"] .callout-title {
+  color: #f39c12 !important
+}
+
+.theme-light .callout[data-callout="question"]:hover {
+  background-color: rgba(253, 203, 110, 0.25) !important
+}
+
+.theme-light .callout[data-callout="question"]::after {
+  content: "❓";
+  color: #f39c12
+}
+
+.theme-light .callout[data-callout="abstract"],
+.theme-light .callout[data-callout="summary"],
+.theme-light .callout[data-callout="tldr"] {
+  background-color: rgba(129, 236, 236, 0.2) !important;
+  color: #00cec9 !important
+}
+
+.theme-light .callout[data-callout="abstract"] .callout-title {
+  color: #00cec9 !important
+}
+
+.theme-light .callout[data-callout="abstract"]:hover {
+  background-color: rgba(129, 236, 236, 0.3) !important
+}
+
+.theme-light .callout[data-callout="abstract"]::after {
+  content: "📑";
+  color: #00cec9
+}
+
 .theme-dark .callout {
   background-color: rgba(255, 255, 255, 0.03) !important;
   border: 1px solid rgba(255, 255, 255, 0.05) !important
@@ -3270,11 +3396,16 @@ body.theme-dark .markdown-preview-view pre:not([class]) {
 }
 
 .theme-dark .callout[data-callout="note"] {
-  border-color: rgba(189, 147, 249, 0.3) !important
+  border-color: rgba(189, 147, 249, 0.3) !important;
+  background-color: rgba(189, 147, 249, 0.1) !important
 }
 
 .theme-dark .callout[data-callout="note"] .callout-title {
   color: #bd93f9 !important
+}
+
+.theme-dark .callout[data-callout="note"]:hover {
+  background-color: rgba(189, 147, 249, 0.2) !important
 }
 
 .theme-dark .callout[data-callout="note"]::after {
@@ -3283,11 +3414,16 @@ body.theme-dark .markdown-preview-view pre:not([class]) {
 }
 
 .theme-dark .callout[data-callout="tip"] {
-  border-color: rgba(139, 233, 253, 0.3) !important
+  border-color: rgba(139, 233, 253, 0.3) !important;
+  background-color: rgba(139, 233, 253, 0.1) !important
 }
 
 .theme-dark .callout[data-callout="tip"] .callout-title {
   color: #8be9fd !important
+}
+
+.theme-dark .callout[data-callout="tip"]:hover {
+  background-color: rgba(139, 233, 253, 0.2) !important
 }
 
 .theme-dark .callout[data-callout="tip"]::after {
@@ -3296,11 +3432,16 @@ body.theme-dark .markdown-preview-view pre:not([class]) {
 }
 
 .theme-dark .callout[data-callout="warning"] {
-  border-color: rgba(255, 184, 108, 0.3) !important
+  border-color: rgba(255, 184, 108, 0.3) !important;
+  background-color: rgba(255, 184, 108, 0.1) !important
 }
 
 .theme-dark .callout[data-callout="warning"] .callout-title {
   color: #ffb86c !important
+}
+
+.theme-dark .callout[data-callout="warning"]:hover {
+  background-color: rgba(255, 184, 108, 0.2) !important
 }
 
 .theme-dark .callout[data-callout="warning"]::after {
@@ -3309,16 +3450,186 @@ body.theme-dark .markdown-preview-view pre:not([class]) {
 }
 
 .theme-dark .callout[data-callout="important"] {
-  border-color: rgba(255, 85, 85, 0.3) !important
+  border-color: rgba(255, 85, 85, 0.3) !important;
+  background-color: rgba(255, 85, 85, 0.1) !important
 }
 
 .theme-dark .callout[data-callout="important"] .callout-title {
   color: #ff5555 !important
 }
 
+.theme-dark .callout[data-callout="important"]:hover {
+  background-color: rgba(255, 85, 85, 0.2) !important
+}
+
 .theme-dark .callout[data-callout="important"]::after {
   content: "🔥";
   color: #ff5555
+}
+
+.theme-dark .callout[data-callout="info"] {
+  border-color: rgba(116, 192, 252, 0.3) !important;
+  background-color: rgba(116, 192, 252, 0.1) !important
+}
+
+.theme-dark .callout[data-callout="info"] .callout-title {
+  color: #74c0fc !important
+}
+
+.theme-dark .callout[data-callout="info"]::after {
+  content: "ℹ️";
+  color: #74c0fc
+}
+
+.theme-dark .callout[data-callout="todo"] {
+  border-color: rgba(80, 250, 123, 0.3) !important;
+  background-color: rgba(80, 250, 123, 0.1) !important
+}
+
+.theme-dark .callout[data-callout="todo"] .callout-title {
+  color: #50fa7b !important
+}
+
+.theme-dark .callout[data-callout="todo"]::after {
+  content: "✅";
+  color: #50fa7b
+}
+
+.theme-dark .callout[data-callout="success"],
+.theme-dark .callout[data-callout="done"] {
+  border-color: rgba(85, 239, 196, 0.3) !important;
+  background-color: rgba(85, 239, 196, 0.1) !important
+}
+
+.theme-dark .callout[data-callout="success"] .callout-title {
+  color: #55efc4 !important
+}
+
+.theme-dark .callout[data-callout="success"]:hover {
+  background-color: rgba(85, 239, 196, 0.15) !important
+}
+
+.theme-dark .callout[data-callout="success"]::after {
+  content: "🎉";
+  color: #55efc4
+}
+
+.theme-dark .callout[data-callout="question"],
+.theme-dark .callout[data-callout="faq"],
+.theme-dark .callout[data-callout="help"] {
+  border-color: rgba(241, 250, 140, 0.3) !important;
+  background-color: rgba(241, 250, 140, 0.1) !important
+}
+
+.theme-dark .callout[data-callout="question"] .callout-title {
+  color: #f1fa8c !important
+}
+
+.theme-dark .callout[data-callout="question"]:hover {
+  background-color: rgba(241, 250, 140, 0.15) !important
+}
+
+.theme-dark .callout[data-callout="question"]::after {
+  content: "❓";
+  color: #f1fa8c
+}
+
+.theme-dark .callout[data-callout="example"] {
+  border-color: rgba(255, 121, 198, 0.3) !important;
+  background-color: rgba(255, 121, 198, 0.1) !important
+}
+
+.theme-dark .callout[data-callout="example"] .callout-title {
+  color: #ff79c6 !important
+}
+
+.theme-dark .callout[data-callout="example"]:hover {
+  background-color: rgba(255, 121, 198, 0.15) !important
+}
+
+.theme-dark .callout[data-callout="example"]::after {
+  content: "🧩";
+  color: #ff79c6
+}
+
+.theme-dark .callout[data-callout="quote"] {
+  border-color: rgba(223, 230, 233, 0.2) !important;
+  background-color: rgba(223, 230, 233, 0.05) !important
+}
+
+.theme-dark .callout[data-callout="quote"] .callout-title {
+  color: #dfe6e9 !important
+}
+
+.theme-dark .callout[data-callout="quote"]::after {
+  content: "💬";
+  color: #dfe6e9
+}
+
+.theme-dark .callout[data-callout="danger"],
+.theme-dark .callout[data-callout="error"] {
+  border-color: rgba(255, 85, 85, 0.4) !important;
+  background-color: rgba(255, 85, 85, 0.1) !important;
+  box-shadow: 0 0 10px rgba(255, 85, 85, 0.1)
+}
+
+.theme-dark .callout[data-callout="danger"] .callout-title,
+.theme-dark .callout[data-callout="error"] .callout-title {
+  color: #ff5555 !important
+}
+
+.theme-dark .callout[data-callout="danger"]::after {
+  content: "⚡";
+  color: #ff5555
+}
+
+.theme-dark .callout[data-callout="error"]::after {
+  content: "❌";
+  color: #ff5555
+}
+
+.theme-dark .callout[data-callout="bug"] {
+  border-color: rgba(255, 85, 85, 0.4) !important;
+  background-color: rgba(255, 85, 85, 0.1) !important
+}
+
+.theme-dark .callout[data-callout="bug"] .callout-title {
+  color: #ff5555 !important
+}
+
+.theme-dark .callout[data-callout="bug"]::after {
+  content: "🐛";
+  color: #ff5555
+}
+
+.theme-dark .callout[data-callout="failure"],
+.theme-dark .callout[data-callout="missing"] {
+  border-color: rgba(179, 57, 57, 0.3) !important;
+  background-color: rgba(0, 0, 0, 0.2) !important
+}
+
+.theme-dark .callout[data-callout="failure"] .callout-title {
+  color: #fab1a0 !important
+}
+
+.theme-dark .callout[data-callout="failure"]::after {
+  content: "📉";
+  color: #fab1a0
+}
+
+.theme-dark .callout[data-callout="abstract"],
+.theme-dark .callout[data-callout="summary"] {
+  border-color: rgba(129, 236, 236, 0.3) !important;
+  background-color: rgba(129, 236, 236, 0.1) !important
+}
+
+.theme-dark .callout[data-callout="abstract"] .callout-title {
+  color: #81ecec !important
+}
+
+.theme-dark .callout[data-callout="abstract"]::after {
+  content: "📑";
+  color: #81ecec
 }
 
 .markdown-source-view.mod-cm6 .cm-embed-block:not(.cm-table-widget, .cm-lang-base):hover {
@@ -4181,4 +4492,9 @@ body.layout-cards:not(.is-phone).theme-dark .status-bar {
 .community-modal-button-container button {
   flex: 1;
   justify-content: center
+}
+
+.codeblock-customizer-line-number,
+.codeblock-customizer-line-number-specific {
+  background: transparent
 }
