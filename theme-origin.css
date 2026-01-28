@@ -3135,6 +3135,22 @@ body.theme-dark .markdown-preview-view pre:not([class]) {
   z-index: 2
 }
 
+.callout[data-callout="multi-column"] .callout-title,
+.callout[data-callout="blank"] .callout-title {
+  display: none !important;
+}
+
+.callout[data-callout="multi-column"] {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.callout[data-callout="multi-column"] .callout-content {
+  padding: 0 !important;
+}
+
 .theme-light .callout[data-callout="note"],
 .theme-light .callout[data-callout="info"],
 .theme-light .callout[data-callout="todo"] {
