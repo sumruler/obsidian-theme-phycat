@@ -177,6 +177,20 @@ settings:
         type: heading
         level: 3
         collapsed: true
+    -  
+        id: h1-alignment
+        title: H1 Alignment
+        title.zh: H1 对齐方式
+        description: Choose whether H1 titles are centered or left-aligned.
+        description.zh: 选择 H1 标题是居中显示还是居左显示。
+        type: class-select
+        allowEmpty: false
+        default: h1-align-center
+        options:
+          - label: ↔️ Center (Default)
+            value: h1-align-center
+          - label: ⬅️ Left
+            value: h1-align-left
     - 
         id: h1-size
         title: H1 font size
@@ -347,6 +361,7 @@ settings:
         type: variable-number
         default: 1.5
 */
+
 :root {
   --h3-icon-shape: url("data:image/svg+xml;utf8,<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><path d='M4.571 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM4.571 18.286c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM11.429 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286z'/></svg>");
   --h4-icon-shape: url("data:image/svg+xml;utf8,<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><path d='M4.571 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM4.571 18.286c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM11.429 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM11.429 22.857c1.257 0 2.286-1.029 2.286-2.286s-1.029-2.286-2.286-2.286-2.286 1.029-2.286 2.286 1.029 2.286 2.286 2.286z'/></svg>");
@@ -369,13 +384,16 @@ body {
   --link-external-decoration-hover: none;
   --titlebar-background: transparent;
   --titlebar-background-focused: transparent;
-  --he-title-bar-inactive-pinned-bg: color-mix(in srgb, var(--primary-color), #fff 20%) --h1-line-height:1.2;
+  --he-title-bar-inactive-pinned-bg: color-mix(in srgb, var(--primary-color), #fff 20%);
+  --h1-line-height: 1.2;
   --h2-line-height: 1.5;
   --h3-line-height: 1.5;
   --h4-line-height: 1.4;
   --h5-line-height: 1.4;
   --h6-line-height: 1.4;
   --file-line-width: 900px;
+  --h1-spacing-scale-start: 1.5;
+  --h1-spacing-scale-end: 1.5;
   --h2-spacing-scale-start: 1.5;
   --h2-spacing-scale-end: 1.5;
   --h3-spacing-scale-start: 1.5;
@@ -999,20 +1017,37 @@ body {
   inset-inline-end: 22px
 }
 
-.theme-light .markdown-preview-view h1 {
+.theme-light.h2-style-capsule .markdown-source-view.mod-cm6 .HyperMD-header-2 .collapse-indicator,
+.theme-dark.h2-style-dark-capsule .markdown-source-view.mod-cm6 .HyperMD-header-2 .collapse-indicator {
+  inset-inline-end: -2px
+}
+
+.theme-light.h2-style-capsule .markdown-source-view.mod-cm6 .HyperMD-header-2 .collapse-indicator svg,
+.theme-dark.h2-style-dark-capsule .markdown-source-view.mod-cm6 .HyperMD-header-2 .collapse-indicator svg,
+.theme-light.h2-style-capsule .markdown-preview-view h2 .heading-collapse-indicator svg,
+.theme-dark.h2-style-dark-capsule .markdown-preview-view h2 .heading-collapse-indicator svg {
+  color: #eee
+}
+
+.theme-light .markdown-preview-view h1,
+.theme-light .markdown-source-view.mod-cm6 .HyperMD-header-1 {
   text-align: center;
   font-weight: 700;
-  margin: 1em auto 0.8em;
   line-height: 1.4;
   color: #222;
   padding-bottom: 12px;
   border-bottom: none;
   display: block;
   width: fit-content;
-  min-width: 120px
+  min-width: 120px;
+  margin-top: 1em;
+  margin-bottom: 0.8em;
+  margin-left: auto !important;
+  margin-right: auto !important
 }
 
-.theme-light .markdown-preview-view h1::after {
+.theme-light .markdown-preview-view h1::after,
+.theme-light .markdown-source-view.mod-cm6 .HyperMD-header-1::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -1033,6 +1068,19 @@ body {
 
 .theme-light .markdown-preview-view h1:hover::after {
   width: 100%
+}
+
+.theme-light.h1-align-left .markdown-preview-view h1,
+.theme-light.h1-align-left .markdown-source-view.mod-cm6 .HyperMD-header-1 {
+  text-align: left;
+  margin-left: 0 !important;
+  margin-right: auto !important
+}
+
+.theme-light.h1-align-left .markdown-preview-view h1::after,
+.theme-light.h1-align-left .markdown-source-view.mod-cm6 .HyperMD-header-1::after {
+  left: 0;
+  transform: none
 }
 
 .theme-light.h2-style-capsule .markdown-preview-view h2,
@@ -1259,17 +1307,22 @@ body {
   transform: translateY(-50%) scaleX(1.8)
 }
 
-.theme-dark .markdown-preview-view h1 {
+.theme-dark .markdown-preview-view h1,
+.theme-dark .markdown-source-view.mod-cm6 .HyperMD-header-1 {
   text-align: center;
-  margin: 2em auto 1em auto;
   padding-bottom: 12px;
   border-bottom: none;
   display: block;
   width: fit-content;
-  min-width: 120px
+  min-width: 120px;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  margin-left: auto !important;
+  margin-right: auto !important
 }
 
-.theme-dark .markdown-preview-view h1::after {
+.theme-dark .markdown-preview-view h1::after,
+.theme-dark .markdown-source-view.mod-cm6 .HyperMD-header-1::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -1291,6 +1344,19 @@ body {
 .theme-dark .markdown-preview-view h1:hover::after {
   width: 100%;
   box-shadow: 0 0 15px var(--h1-underline-color)
+}
+
+.theme-dark.h1-align-left .markdown-preview-view h1,
+.theme-dark.h1-align-left .markdown-source-view.mod-cm6 .HyperMD-header-1 {
+  text-align: left;
+  margin-left: 0 !important;
+  margin-right: auto !important
+}
+
+.theme-dark.h1-align-left .markdown-preview-view h1::after,
+.theme-dark.h1-align-left .markdown-source-view.mod-cm6 .HyperMD-header-1::after {
+  left: 0;
+  transform: none
 }
 
 .theme-dark.h2-style-dark-capsule .markdown-preview-view h2,
@@ -2034,6 +2100,7 @@ body {
   position: relative;
   list-style: none;
   padding-left: 4px;
+  min-height: calc(var(--line-height-customize) * 1em);
   transition: color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), text-decoration-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
   text-decoration: line-through !important;
   text-decoration-color: transparent !important;
@@ -2278,15 +2345,11 @@ body {
 .markdown-preview-view mark,
 .markdown-source-view.mod-cm6 mark,
 .markdown-source-view.mod-cm6 .cm-highlight {
-  background-color: transparent !important;
   padding: 0 2px;
   margin: 0;
   border-radius: 4px;
   font-weight: inherit;
   color: inherit;
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  transition: background-size 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease, text-shadow 0.3s ease, box-shadow 0.3s ease;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone
 }
@@ -2301,24 +2364,33 @@ body {
   display: none !important
 }
 
-body.theme-light .markdown-preview-view mark,
-body.theme-light .markdown-source-view.mod-cm6 mark,
-body.theme-light .markdown-source-view.mod-cm6 .cm-highlight {
+.markdown-preview-view mark:not([style*="background"]),
+.markdown-source-view.mod-cm6 mark:not([style*="background"]),
+.markdown-source-view.mod-cm6 .cm-highlight:not([style*="background"]) {
+  background-color: transparent !important;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease, text-shadow 0.3s ease, box-shadow 0.3s ease
+}
+
+body.theme-light .markdown-preview-view mark:not([style*="background"]),
+body.theme-light .markdown-source-view.mod-cm6 mark:not([style*="background"]),
+body.theme-light .markdown-source-view.mod-cm6 .cm-highlight:not([style*="background"]) {
   background-image: linear-gradient(to top, color-mix(in srgb, var(--primary-color), transparent 60%), transparent);
   background-size: 100% 40%;
   color: var(--text-normal)
 }
 
-body.theme-light .markdown-preview-view mark:hover,
-body.theme-light .markdown-source-view.mod-cm6 mark:hover,
-body.theme-light .markdown-source-view.mod-cm6 .cm-highlight:hover {
+body.theme-light .markdown-preview-view mark:not([style*="background"]):hover,
+body.theme-light .markdown-source-view.mod-cm6 mark:not([style*="background"]):hover,
+body.theme-light .markdown-source-view.mod-cm6 .cm-highlight:not([style*="background"]):hover {
   background-size: 100% 100%;
   background-image: linear-gradient(to top, color-mix(in srgb, var(--primary-color), transparent 40%), color-mix(in srgb, var(--primary-color), transparent 80%))
 }
 
-body.theme-dark .markdown-preview-view mark,
-body.theme-dark .markdown-source-view.mod-cm6 mark,
-body.theme-dark .markdown-source-view.mod-cm6 .cm-highlight {
+body.theme-dark .markdown-preview-view mark:not([style*="background"]),
+body.theme-dark .markdown-source-view.mod-cm6 mark:not([style*="background"]),
+body.theme-dark .markdown-source-view.mod-cm6 .cm-highlight:not([style*="background"]) {
   background-image: linear-gradient(to top, color-mix(in srgb, var(--primary-color), transparent 50%), transparent) !important;
   background-size: 100% 40%;
   color: color-mix(in srgb, var(--primary-color), white 20%) !important;
@@ -2326,133 +2398,9 @@ body.theme-dark .markdown-source-view.mod-cm6 .cm-highlight {
   box-shadow: none
 }
 
-body.theme-dark .markdown-preview-view mark:hover,
-body.theme-dark .markdown-source-view.mod-cm6 mark:hover,
-body.theme-dark .markdown-source-view.mod-cm6 .cm-highlight:hover {
-  background-size: 100% 100%;
-  background-image: linear-gradient(to top, color-mix(in srgb, var(--primary-color), transparent 20%), color-mix(in srgb, var(--primary-color), transparent 80%)) !important;
-  color: #fff !important;
-  text-shadow: 0 0 10px var(--primary-color);
-  box-shadow: 0 0 15px color-mix(in srgb, var(--primary-color), transparent 80%);
-  transform: none
-}
-
-.markdown-preview-view mark,
-.markdown-source-view.mod-cm6 mark,
-.markdown-source-view.mod-cm6 .cm-highlight {
-  background-color: transparent !important;
-  padding: 0 2px;
-  margin: 0;
-  border-radius: 4px;
-  font-weight: inherit;
-  color: inherit;
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  transition: background-size 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease, text-shadow 0.3s ease, box-shadow 0.3s ease;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone
-}
-
-.markdown-preview-view mark::before,
-.markdown-preview-view mark::after,
-.markdown-source-view.mod-cm6 mark::before,
-.markdown-source-view.mod-cm6 mark::after,
-.markdown-source-view.mod-cm6 .cm-highlight::before,
-.markdown-source-view.mod-cm6 .cm-highlight::after {
-  content: none !important;
-  display: none !important
-}
-
-body.theme-light .markdown-preview-view mark,
-body.theme-light .markdown-source-view.mod-cm6 mark,
-body.theme-light .markdown-source-view.mod-cm6 .cm-highlight {
-  background-image: linear-gradient(to top, color-mix(in srgb, var(--primary-color), transparent 60%), transparent);
-  background-size: 100% 40%;
-  color: var(--text-normal)
-}
-
-body.theme-light .markdown-preview-view mark:hover,
-body.theme-light .markdown-source-view.mod-cm6 mark:hover,
-body.theme-light .markdown-source-view.mod-cm6 .cm-highlight:hover {
-  background-size: 100% 100%;
-  background-image: linear-gradient(to top, color-mix(in srgb, var(--primary-color), transparent 40%), color-mix(in srgb, var(--primary-color), transparent 80%))
-}
-
-body.theme-dark .markdown-preview-view mark,
-body.theme-dark .markdown-source-view.mod-cm6 mark,
-body.theme-dark .markdown-source-view.mod-cm6 .cm-highlight {
-  background-image: linear-gradient(to top, color-mix(in srgb, var(--primary-color), transparent 50%), transparent) !important;
-  background-size: 100% 40%;
-  color: color-mix(in srgb, var(--primary-color), white 20%) !important;
-  text-shadow: none;
-  box-shadow: none
-}
-
-body.theme-dark .markdown-preview-view mark:hover,
-body.theme-dark .markdown-source-view.mod-cm6 mark:hover,
-body.theme-dark .markdown-source-view.mod-cm6 .cm-highlight:hover {
-  background-size: 100% 100%;
-  background-image: linear-gradient(to top, color-mix(in srgb, var(--primary-color), transparent 20%), color-mix(in srgb, var(--primary-color), transparent 80%)) !important;
-  color: #fff !important;
-  text-shadow: 0 0 10px var(--primary-color);
-  box-shadow: 0 0 15px color-mix(in srgb, var(--primary-color), transparent 80%);
-  transform: none
-}
-
-.markdown-preview-view mark,
-.markdown-source-view.mod-cm6 mark,
-.markdown-source-view.mod-cm6 .cm-highlight {
-  background-color: transparent !important;
-  padding: 0 2px;
-  margin: 0;
-  border-radius: 4px;
-  font-weight: inherit;
-  color: inherit;
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  transition: background-size 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.3s ease, text-shadow 0.3s ease, box-shadow 0.3s ease;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone
-}
-
-.markdown-preview-view mark::before,
-.markdown-preview-view mark::after,
-.markdown-source-view.mod-cm6 mark::before,
-.markdown-source-view.mod-cm6 mark::after,
-.markdown-source-view.mod-cm6 .cm-highlight::before,
-.markdown-source-view.mod-cm6 .cm-highlight::after {
-  content: none !important;
-  display: none !important
-}
-
-body.theme-light .markdown-preview-view mark,
-body.theme-light .markdown-source-view.mod-cm6 mark,
-body.theme-light .markdown-source-view.mod-cm6 .cm-highlight {
-  background-image: linear-gradient(to top, color-mix(in srgb, var(--primary-color), transparent 60%), transparent);
-  background-size: 100% 40%;
-  color: var(--text-normal)
-}
-
-body.theme-light .markdown-preview-view mark:hover,
-body.theme-light .markdown-source-view.mod-cm6 mark:hover,
-body.theme-light .markdown-source-view.mod-cm6 .cm-highlight:hover {
-  background-size: 100% 100%;
-  background-image: linear-gradient(to top, color-mix(in srgb, var(--primary-color), transparent 40%), color-mix(in srgb, var(--primary-color), transparent 80%))
-}
-
-body.theme-dark .markdown-preview-view mark,
-body.theme-dark .markdown-source-view.mod-cm6 mark,
-body.theme-dark .markdown-source-view.mod-cm6 .cm-highlight {
-  background-image: linear-gradient(to top, color-mix(in srgb, var(--primary-color), transparent 50%), transparent) !important;
-  background-size: 100% 40%;
-  color: color-mix(in srgb, var(--primary-color), white 10%) !important;
-  text-shadow: none;
-  box-shadow: none
-}
-
-body.theme-dark .markdown-preview-view mark:hover,
-body.theme-dark .markdown-source-view.mod-cm6 mark:hover,
-body.theme-dark .markdown-source-view.mod-cm6 .cm-highlight:hover {
+body.theme-dark .markdown-preview-view mark:not([style*="background"]):hover,
+body.theme-dark .markdown-source-view.mod-cm6 mark:not([style*="background"]):hover,
+body.theme-dark .markdown-source-view.mod-cm6 .cm-highlight:not([style*="background"]):hover {
   background-size: 100% 100%;
   background-image: linear-gradient(to top, color-mix(in srgb, var(--primary-color), transparent 20%), color-mix(in srgb, var(--primary-color), transparent 80%)) !important;
   color: #fff !important;
@@ -3740,13 +3688,6 @@ body.theme-light .markdown-source-view.mod-cm6 kbd:hover {
   background-color: transparent !important
 }
 
-.mermaid svg {
-  max-width: none !important;
-  width: auto !important;
-  min-width: 100%;
-  height: auto !important
-}
-
 .mermaid .node rect,
 .mermaid .node circle,
 .mermaid .node ellipse,
@@ -3843,7 +3784,7 @@ body.theme-light .markdown-source-view.mod-cm6 kbd:hover {
   border-radius: 16px;
   border: 1px solid var(--border-color);
   box-shadow: 0 20px 60px -10px rgba(0, 0, 0, 0.4);
-  overflow: hidden;
+  overflow: auto;
   max-width: 1100px;
   transition: transform 0.2s ease, opacity 0.2s ease
 }
@@ -4151,7 +4092,8 @@ body.layout-cards .workspace-ribbon.mod-left:before {
 }
 
 body.layout-cards .workspace-ribbon {
-  border-right: transparent !important
+  border-right: transparent !important;
+  background-color: transparent
 }
 
 body.layout-cards .workspace-ribbon.mod-left:before {
