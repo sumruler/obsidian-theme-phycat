@@ -3,25 +3,25 @@ name: 🐱 Phycat theme Info & Help
 name.zh: 🐱 Phycat 主题帮助信息
 id: phycat-info
 settings:
-    - 
+    -
         id: info-intro
         type: info-text
         markdown: true
         description: "### Phycat Theme \n A vibrant, glassmorphism aesthetic theme for Obsidian. \n\n [Github Repository](https://github.com/sumruler/obsidian-theme-phycat) | [Report Issue](https://github.com/sumruler/obsidian-theme-phycat/issues)| [Support](https://www.phycat.cn/donate.html)"
         description.zh: "### Phycat 主题 \n 一个充满活力、具有玻璃拟态美感的 Obsidian 主题。\n\n [Github 仓库](https://github.com/sumruler/obsidian-theme-phycat) | [反馈问题](https://github.com/sumruler/obsidian-theme-phycat/issues)| [打赏支持](https://www.phycat.cn/donate.html)"
-    - 
+    -
         id: info-font-tip
         type: info-text
         markdown: true
         description: "**💡 Font Recommendation:** \n This theme is optimized for [**LXGW WenKai**](https://github.com/lxgw/LxgwWenKai). Please install it for the best experience."
         description.zh: "**💡 字体建议：** \n 本主题针对 [**霞鹜文楷 (LXGW WenKai)**](https://github.com/lxgw/LxgwWenKai) 进行了优化，建议安装该字体以获得最佳体验。"
-    - 
+    -
         id: info-view-tip
         type: info-text
         markdown: true
         description: "**🪟 Pro Tip: Independent Settings View** \n Press `Ctrl+P` and search for `Style Settings: Show style settings view`. This opens the settings in a separate pane instead of a modal, preventing it from blocking your view."
         description.zh: "**🪟 技巧：独立设置窗口** \n 按下 `Ctrl+P` 呼出命令面板，搜索 `Style Settings: Show style settings view`。这可以单独打开一个设置面板，避免全屏弹窗遮挡你的笔记。"
-    - 
+    -
         id: info-hover-tip
         type: info-text
         markdown: true
@@ -34,7 +34,7 @@ name: 🎨 Phycat color setting
 name.zh: 🎨 Phycat 配色设置
 id: phycat-colors
 settings:
-    - 
+    -
         id: light-color-scheme
         title: Color Scheme (Light Mode)
         title.zh: 配色方案（亮色模式）
@@ -44,31 +44,31 @@ settings:
         allowEmpty: false
         default: theme-light-sakura
         options:
-            - 
+            -
                 label: 🌸 Sakura (Pink / Default)
                 value: theme-light-sakura
-            - 
+            -
                 label: 🌊 Mint (Mint Blue)
                 value: theme-light-mint
-            - 
+            -
                 label: ☁️ Sky (Clear Blue)
                 value: theme-light-sky
-            - 
+            -
                 label: 🌲 Forest (Natural Green)
                 value: theme-light-forest
-            - 
+            -
                 label: 🟣 Mauve (Orchid Purple)
                 value: theme-light-mauve
-            - 
+            -
                 label: 🌅 Golden Hour (Warm Amber)
                 value: theme-light-golden
-            - 
-                label: 🍒 Cheery (Vibrant Red)
-                value: theme-light-cheery
-            - 
+            -
+                label: 🍒 Cherry (Vibrant Red)
+                value: theme-light-cherry
+            -
                 label: ⚓ Prussian (Deep Blue)
                 value: theme-light-prussian
-    - 
+    -
         id: dark-color-scheme
         title: Color Scheme (Dark Mode)
         title.zh: 配色方案（暗色模式）
@@ -78,13 +78,13 @@ settings:
         allowEmpty: false
         default: theme-dark-vampire
         options:
-            - 
+            -
                 label: 🧛 Vampire (Dracula / Default)
                 value: theme-dark-vampire
-            - 
+            -
                 label: 🌌 Abyss (Midnight Blue)
                 value: theme-dark-abyss
-            - 
+            -
                 label: ☢️ Radiation (Toxic Green)
                 value: theme-dark-radiation
 */
@@ -95,7 +95,7 @@ name: 🗂️ Phycat card Layout
 name.zh: 🗂️ Phycat 卡片布局设置
 id: phycat-layout
 settings:
-    - 
+    -
         id: layout-style
         title: Interface Layout
         title.zh: 界面布局风格
@@ -105,18 +105,26 @@ settings:
         allowEmpty: false
         default: layout-default
         options:
-            - 
+            -
                 label: 🔲 Default (Flat)
                 value: layout-default
-            - 
+            -
                 label: 🃏 Cards (Floating)
                 value: layout-cards
-    - 
+    -
         id: rainbow-folders
         title: 启用彩虹文件夹 (Rainbow Folders)
         description: 启用后，侧边栏文件列表将变为多彩嵌套的玻璃容器风格，并带有动态类型图标。关闭则恢复 Obsidian 默认样式。
         type: class-toggle
-    - 
+    -
+        id: folder-icons
+        title: Folder Icons
+        title.zh: 文件夹图标
+        description: Enable custom folder icons in the file explorer. Disable to restore Obsidian default folder icons.
+        description.zh: 开启侧边栏文件列表中的自定义文件夹图标；关闭后恢复 Obsidian 默认文件夹图标，若使用iconize插件请关闭此开关。
+        type: class-toggle
+        default: true
+    -
         id: bg-mix-percent
         title: 背景色混合比例（Card模式生效）
         description: 调整背景色中白色的混合程度（数值越大越白，默认为 90）。
@@ -125,7 +133,7 @@ settings:
         min: 0
         max: 100
         step: 1
-                
+
 */
 
 
@@ -139,7 +147,7 @@ name: 📏 Phycat spacing setting
 name.zh: 📏 Phycat 文章间距设置
 id: phycat-spacing
 settings:
-    - 
+    -
         id: file-line-width
         title: File line width
         title.zh: 阅读区宽度
@@ -147,38 +155,38 @@ settings:
         type: variable-number
         default: 900
         format: px
-    - 
+    -
         id: letter-spacing
         title: Letter spacing
         title.zh: 字间距
         type: variable-number
         default: 1
         format: px
-    - 
+    -
         id: line-height-customize
         title: Line height
         title.zh: 段落行高
         type: variable-number
         default: 2.2
-    - 
+    -
         id: code-line-height
         title: code Line height
         title.zh: 代码行高
         type: variable-number
         default: 1.6
-    - 
+    -
         id: blockquote-line-height
         title: blockquote Line height
         title.zh: 引用块行高
         type: variable-number
         default: 1.6
-    - 
+    -
         id: table-line-height
         title: Table Line height
         title.zh: 表格行高
         type: variable-number
         default: 1.8
-    - 
+    -
         id: p-spacing
         title: Paragraph spacing (Reading mode)
         title.zh:  段落间距（阅读模式）
@@ -191,7 +199,7 @@ name: 📑 Phycat heading setting
 name.ZH: 📑 Phycat 标题设置
 id: phycat-headings
 settings:
-    - 
+    -
         id: headings-color-setting
         title: Headings Colors
         title.zh: 标题文字颜色设置
@@ -199,14 +207,14 @@ settings:
         level: 3
         collapsed: true
 
-    - 
+    -
         id: h1-light-color
         title: H1 light color
         title.zh: H1 亮颜色
         type: variable-color
         format: hex
         default: '#000000'
-    - 
+    -
         id: h1-dark-color
         title: H1 dark color
         title.zh: H1 暗颜色
@@ -214,29 +222,29 @@ settings:
         format: hex
         default: '#ffffff'
 
-    - 
+    -
         id: h2-light-color
         title: H2 light color
         title.zh: H2 亮颜色
         type: variable-color
         format: hex
         default: '#000000'
-    - 
+    -
         id: h2-dark-color
         title: H2 dark color
         title.zh: H2 暗颜色
         type: variable-color
         format: hex
         default: '#ffffff'
- 
-    - 
+
+    -
         id: h3-light-color
         title: H3 light color
         title.zh: H3 亮颜色
         type: variable-color
         format: hex
         default: '#000000'
-    - 
+    -
         id: h3-dark-color
         title: H3 dark color
         title.zh: H3 暗颜色
@@ -244,14 +252,14 @@ settings:
         format: hex
         default: '#ffffff'
 
-    - 
+    -
         id: h4-light-color
         title: H4 light color
         title.zh: H4 亮颜色
         type: variable-color
         format: hex
         default: '#000000'
-    - 
+    -
         id: h4-dark-color
         title: H4 dark color
         title.zh: H4 暗颜色
@@ -259,14 +267,14 @@ settings:
         format: hex
         default: '#ffffff'
 
-    - 
+    -
         id: h5-light-color
         title: H5 light color
         title.zh: H5 亮颜色
         type: variable-color
         format: hex
         default: '#000000'
-    - 
+    -
         id: h5-dark-color
         title: H5 dark color
         title.zh: H5 暗颜色
@@ -274,28 +282,28 @@ settings:
         format: hex
         default: '#ffffff'
 
-    - 
+    -
         id: h6-light-color
         title: H6 light color
         title.zh: H6 亮颜色
         type: variable-color
         format: hex
         default: '#000000'
-    - 
+    -
         id: h6-dark-color
         title: H6 dark color
         title.zh: H6 暗颜色
         type: variable-color
         format: hex
         default: '#ffffff'
-    - 
+    -
         id: heading1-setting
         title: H1 title
         title.zh: 一级标题
         type: heading
         level: 3
         collapsed: true
-    -  
+    -
         id: h1-alignment
         title: H1 Alignment
         title.zh: H1 对齐方式
@@ -309,21 +317,21 @@ settings:
             value: h1-align-center
           - label: ⬅️ Left
             value: h1-align-left
-    - 
+    -
         id: h1-size
         title: H1 font size
         title.zh: H1字体大小
         type: variable-number
         default: 1.618
         format: em
-    - 
+    -
         id: heading2-setting
         title: H2 title
         title.zh: 二级标题
         type: heading
         level: 3
         collapsed: true
-    - 
+    -
         id: h2-style-select
         title: Select Style
         title.zh: 亮色模式风格
@@ -333,13 +341,13 @@ settings:
         allowEmpty: false
         default: h2-style-twin
         options:
-            - 
+            -
                 label: 🏛️ Twin Pillars (New)
                 value: h2-style-twin
-            - 
+            -
                 label: 💊 Capsule (Original)
                 value: h2-style-capsule
-    - 
+    -
         id: h2-style-dark-select
         title: Select Style
         title.zh: 暗色模式选择风格
@@ -349,138 +357,136 @@ settings:
         allowEmpty: false
         default: h2-style-dark-twin
         options:
-            - 
+            -
                 label: 🏙️ Neon Twin (New)
                 value: h2-style-dark-twin
-            - 
+            -
                 label: 🔮 Glass Capsule (Original)
                 value: h2-style-dark-capsule
-    - 
+    -
         id: h2-size
         title: H2 font size
         title.zh: H2字体大小
         type: variable-number
         default: 1.462
         format: em
-    - 
+    -
         id: h2-spacing-scale-start
         title: H2 spacing start
         title.zh: H2前间距
         type: variable-number
         default: 1.318
-    - 
+    -
         id: h2-spacing-scale-end
         title: H2 spacing end
         title.zh: H2后间距
         type: variable-number
         default: 1.318
-    - 
+    -
         id: heading3-setting
         title: H3 title
         title.zh: 三级标题
         type: heading
         level: 3
         collapsed: true
-    - 
+    -
         id: h3-size
         title: H3 font size
         title.zh: H3字体大小
         type: variable-number
         default: 1.318
         format: em
-    - 
+    -
         id: h3-spacing-scale-start
         title: H3 spacing start
         title.zh: H3前间距
         type: variable-number
         default: 1.5
-    - 
+    -
         id: h3-spacing-scale-end
         title: H3 spacing end
         title.zh: H3后间距
         type: variable-number
         default: 1.5
-    - 
+    -
         id: heading4-setting
         title: H4 title
         title.zh: 四级标题
         type: heading
         level: 3
         collapsed: true
-    - 
+    -
         id: h4-size
         title: H4 font size
         title.zh: H4字体大小
         type: variable-number
         default: 1.2
         format: em
-    - 
+    -
         id: h4-spacing-scale-start
         title: H4 spacing start
         title.zh: H4前间距
         type: variable-number
         default: 1.5
-    - 
+    -
         id: h4-spacing-scale-end
         title: H4 spacing end
         title.zh: H4后间距
         type: variable-number
         default: 1.5
-    - 
+    -
         id: heading5-setting
         title: H5 title
         title.zh: 五级标题
         type: heading
         level: 3
         collapsed: true
-    - 
+    -
         id: h5-size
         title: H5 font size
         title.zh: H5字体大小
         type: variable-number
         default: 1.2
         format: em
-    - 
+    -
         id: h5-spacing-scale-start
         title: H5 spacing start
         title.zh: H5前间距
         type: variable-number
         default: 1.5
-    - 
+    -
         id: h5-spacing-scale-end
         title: H5 spacing end
         title.zh: H5后间距
         type: variable-number
         default: 1.5
-    - 
+    -
         id: heading6-setting
         title: H6 title
         title.zh: 六级标题
         type: heading
         level: 3
         collapsed: true
-    - 
+    -
         id: h6-size
         title: H6 font size
         title.zh: H6字体大小
         type: variable-number
         default: 1.2
         format: em
-    - 
+    -
         id: h6-spacing-scale-start
         title: H6 spacing start
         title.zh: H6前间距
         type: variable-number
         default: 1.5
-    - 
+    -
         id: h6-spacing-scale-end
         title: H6 spacing end
         title.zh: H6后间距
         type: variable-number
         default: 1.5
 */
-
-
 :root {
   --h3-icon-shape: url("data:image/svg+xml;utf8,<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><path d='M4.571 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM4.571 18.286c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM11.429 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286z'/></svg>");
   --h4-icon-shape: url("data:image/svg+xml;utf8,<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><path d='M4.571 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM4.571 18.286c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM11.429 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM11.429 22.857c1.257 0 2.286-1.029 2.286-2.286s-1.029-2.286-2.286-2.286-2.286 1.029-2.286 2.286 1.029 2.286 2.286 2.286z'/></svg>");
@@ -689,7 +695,7 @@ body.theme-dark.theme-dark-radiation {
 }
 
 body.theme-light.theme-light-sakura,
-body.theme-light:not(.theme-light-sky):not(.theme-light-forest):not(.theme-light-mint):not(.theme-light-mauve):not(.theme-light-golden):not(.theme-light-cheery):not(.theme-light-prussian) {
+body.theme-light:not(.theme-light-sky):not(.theme-light-forest):not(.theme-light-mint):not(.theme-light-mauve):not(.theme-light-golden):not(.theme-light-cherry):not(.theme-light-prussian) {
   --primary-color: #ff7096;
   --secondary-color: #bd93f9;
   --bg-color: #fff7fa;
@@ -887,7 +893,7 @@ body.theme-light.theme-light-golden {
   --code-block-header-bg: color-mix(in srgb, var(--primary-color), transparent 94%)
 }
 
-body.theme-light.theme-light-cheery {
+body.theme-light.theme-light-cherry {
   --primary-color: #aa1141;
   --secondary-color: #810000;
   --bg-color: #fffbfb;
@@ -1004,7 +1010,8 @@ body.theme-light {
   --h3-color: var(--h3-light-color, #000000);
   --h4-color: var(--h4-light-color, #000000);
   --h5-color: var(--h5-light-color, #000000);
-  --h6-color: var(--h6-light-color, #000000)
+  --h6-color: var(--h6-light-color, #000000);
+  --ribbon-background-collapsed: var(--background-card)
 }
 
 body.theme-dark {
@@ -1076,6 +1083,15 @@ body {
 .markdown-preview-view,
 .markdown-source-view.mod-cm6 .cm-scroller {
   line-height: var(--line-height-customize)
+}
+
+.markdown-preview-view :is(.metadata-container, .frontmatter-container, .frontmatter),
+.markdown-source-view.mod-cm6 :is(.metadata-container, .frontmatter-container, .frontmatter) {
+  line-height: 1.4
+}
+
+:is(.markdown-preview-view, .markdown-source-view.mod-cm6) .metadata-container :is(.metadata-content, .metadata-properties, .metadata-property, .metadata-property-key, .metadata-property-key-input, .metadata-property-value, .metadata-property-value-item, .metadata-property-value > *, .metadata-input, .metadata-input-text, .metadata-input-longtext, .metadata-input-number, .metadata-input-checkbox, .metadata-link, .multi-select-container, .multi-select-input, .multi-select-pill, .multi-select-pill-content) {
+  line-height: inherit
 }
 
 body .markdown-preview-view h1,
@@ -2471,7 +2487,7 @@ body .markdown-source-view.mod-cm6 .HyperMD-header-6 {
   padding-left: 4px;
   min-height: calc(var(--line-height-customize) * 1em);
   transition: color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), text-decoration-color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
-  text-decoration: line-through !important;
+  text-decoration: none !important;
   text-decoration-color: transparent !important;
   text-decoration-thickness: 2px !important
 }
@@ -2479,6 +2495,7 @@ body .markdown-source-view.mod-cm6 .HyperMD-header-6 {
 .markdown-preview-view .task-list-item.is-checked {
   color: #888 !important;
   opacity: 0.8;
+  text-decoration-line: line-through !important;
   text-decoration-color: var(--text-color-secondary) !important
 }
 
@@ -2939,13 +2956,10 @@ body.theme-light .markdown-source-view.mod-cm6 .cm-strikethrough:hover {
   border-collapse: separate !important;
   border-spacing: 0 !important;
   width: 100%;
-  margin: 1.5em 0;
   border: 1px solid var(--border-color);
   border-radius: var(--table-border-radius);
   overflow: hidden;
   background-color: var(--table-bg);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
   line-height: var(--table-line-height)
 }
 
@@ -4030,15 +4044,44 @@ body.theme-light .markdown-source-view.mod-cm6 kbd:hover {
 .mermaid foreignObject span,
 .mermaid foreignObject p,
 .mermaid span.nodeLabel {
-  color: var(--mermaid-text-color) !important;
-  fill: #ffffff !important;
-  background-color: transparent !important;
-  background: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  font-size: 12px !important;
-  line-height: 1.5 !important;
-  font-weight: 500 !important
+  font-size: 12px !important
+}
+
+.edgeLabel p {
+  background-color: color-mix(in srgb, var(--primary-color), white 90%) !important;
+  border: 1px solid var(--primary-color) !important;
+  border-radius: 4px !important;
+  letter-spacing: 0 !important;
+  padding: 0 3px
+}
+
+.cluster rect {
+  fill: color-mix(in srgb, var(--secondary-color), transparent 90%) !important;
+  stroke: var(--secondary-color) !important;
+  stroke-width: 1px !important;
+  stroke-linejoin: round;
+  rx: 5px;
+  ry: 5px
+}
+
+.cluster-label span p {
+  letter-spacing: 0 !important
+}
+
+#m54fff87155a51594 .actor {
+  fill: color-mix(in srgb, var(--primary-color), white 90%) !important;
+  stroke: var(--primary-color) !important;
+  rx: 5px;
+  ry: 5px
+}
+
+.statediagram-cluster rect {
+  fill: color-mix(in srgb, var(--primary-color), white 90%) !important;
+  stroke: var(--primary-color) !important
+}
+
+.mermaid * {
+  letter-spacing: 0
 }
 
 .mermaid foreignObject {
@@ -4048,29 +4091,6 @@ body.theme-light .markdown-source-view.mod-cm6 kbd:hover {
 .mermaid .node .label,
 .mermaid .label {
   stroke: none !important
-}
-
-.mermaid .edgePath .path,
-.mermaid .flowchart-link {
-  stroke: #999 !important;
-  stroke-width: 1.5px !important;
-  opacity: 1 !important
-}
-
-.mermaid .marker path,
-.mermaid marker path {
-  fill: #e0e0e0 !important;
-  stroke: #e0e0e0 !important
-}
-
-.mermaid .edgeLabel .label rect {
-  fill: #2e2e2e !important;
-  opacity: 1 !important;
-  rx: 4px
-}
-
-.mermaid .edgeLabel .label {
-  background-color: #2e2e2e !important
 }
 
 .mermaid::-webkit-scrollbar {
@@ -4448,6 +4468,33 @@ body.layout-cards:not(.is-mobile) .workspace-split.mod-left-split .workspace-sid
   background-color: var(--background-card)
 }
 
+body.layout-cards:not(.is-mobile) .workspace-split.mod-left-split {
+  position: relative
+}
+
+body.layout-cards:not(.is-mobile) .workspace-split.mod-left-split .workspace-tabs:last-of-type .workspace-tab-container {
+  padding-bottom: 44px
+}
+
+body.layout-cards:not(.is-mobile) .workspace-split.mod-left-split .workspace-sidedock-vault-profile {
+  position: absolute;
+  right: 10px;
+  bottom: 8px;
+  left: 10px;
+  box-sizing: border-box;
+  height: 44px;
+  margin: 0;
+  padding: 6px;
+  padding-right: 25px;
+  background: transparent !important;
+  border: 0 !important;
+  z-index: 10
+}
+
+body.layout-cards:not(.is-mobile) .workspace-split.mod-left-split .workspace-sidedock-vault-profile .workspace-drawer-vault-switcher {
+  height: 32px
+}
+
 body.layout-cards:not(.is-mobile).theme-light .workspace-tab-container {
   border-radius: 20px 20px 10px 10px;
   border: 1px solid color-mix(in srgb, var(--primary-color), transparent 80%);
@@ -4485,7 +4532,7 @@ body.layout-cards.theme-light .mod-vertical:not(.mod-left-split):not(.mod-right-
   background-color: var(--background-primary);
   font-weight: bold;
   flex-grow: 1.67;
-  max-width: 240px
+  max-width: var(--tab-max-width)
 }
 
 body.layout-cards.theme-light .mod-root:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner {
@@ -4565,8 +4612,8 @@ body.layout-cards:not(.is-phone).theme-dark .status-bar {
 
 .community-modal-meta {
   display: grid;
-  grid-template-areas: "name name name name" "desc desc desc desc" "stats stats stats stats" "buttons buttons buttons buttons";
-  grid-template-columns: 2fr 2fr 2fr 1fr;
+  grid-template-areas: "name name name name" "desc desc desc desc" "downloads version author updated" "repo repo repo repo" "buttons buttons buttons buttons";
+  grid-template-columns: minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr) minmax(0, 1fr);
   gap: 16px;
   margin-bottom: 0 !important
 }
@@ -4633,49 +4680,33 @@ body.layout-cards:not(.is-phone).theme-dark .status-bar {
 }
 
 .community-modal-info-downloads {
-  grid-area: stats;
-  grid-column: 1
+  grid-area: downloads
 }
 
 .community-modal-info-version {
-  grid-area: stats;
-  grid-column: 2
+  grid-area: version
 }
 
 .community-modal-info-author {
-  grid-area: stats;
-  grid-column: 3
+  grid-area: author
 }
 
 .community-modal-info-repo {
-  grid-area: stats;
-  grid-column: 4
+  grid-area: repo;
+  grid-column: 1 / -1;
+  align-items: flex-start
+}
+
+.community-modal-info-repo+.community-modal-info-repo {
+  grid-area: updated;
+  grid-column: auto;
+  align-items: stretch
 }
 
 @media (max-width:700px) {
   .community-modal-meta {
-    grid-template-areas: "name" "desc" "stats-1" "stats-2" "stats-3" "stats-4" "buttons";
+    grid-template-areas: "name" "desc" "downloads" "version" "author" "updated" "repo" "buttons";
     grid-template-columns: 1fr
-  }
-
-  .community-modal-info-downloads {
-    grid-area: stats-1;
-    grid-column: auto
-  }
-
-  .community-modal-info-version {
-    grid-area: stats-2;
-    grid-column: auto
-  }
-
-  .community-modal-info-author {
-    grid-area: stats-3;
-    grid-column: auto
-  }
-
-  .community-modal-info-repo {
-    grid-area: stats-4;
-    grid-column: auto
   }
 }
 
@@ -4721,6 +4752,10 @@ body.layout-cards:not(.is-phone).theme-dark .status-bar {
   content: "REPOSITORY"
 }
 
+.community-modal-info-repo+.community-modal-info-repo::before {
+  content: "UPDATED"
+}
+
 .community-modal-info-version::before,
 .community-modal-info-author::before,
 .community-modal-info-repo::before {
@@ -4741,6 +4776,15 @@ body.layout-cards:not(.is-phone).theme-dark .status-bar {
   overflow: hidden;
   text-overflow: ellipsis;
   display: block
+}
+
+.community-modal-info-author+.community-modal-info-repo a {
+  color: var(--primary-color);
+  overflow: visible;
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-overflow: clip;
+  white-space: normal
 }
 
 .community-modal-info-author a:hover,
@@ -4816,6 +4860,10 @@ body.rainbow-folders .nav-files-container>div>.nav-folder:nth-child(7n+7) {
   --folder-color: var(--nav-c-blue)
 }
 
+body div.nav-files-container.node-insert-event {
+  border-bottom: 1px solid color-mix(in srgb, var(--primary-color), transparent 85%) !important
+}
+
 body.rainbow-folders .nav-files-container>div>.nav-folder {
   margin: 0 0 8px 0 !important;
   padding: 0px 0 !important;
@@ -4854,8 +4902,8 @@ body.rainbow-folders .nav-folder-title:hover {
   background-color: var(--background-modifier-hover)
 }
 
-body.rainbow-folders .nav-folder-collapse-indicator,
-body.rainbow-folders .nav-folder .collapse-icon {
+body.rainbow-folders.folder-icons .nav-folder-collapse-indicator,
+body.rainbow-folders.folder-icons .nav-folder .collapse-icon {
   display: none !important
 }
 
@@ -4869,7 +4917,7 @@ body.rainbow-folders .nav-folder:hover>.nav-folder-children {
   border-left-color: color-mix(in srgb, var(--folder-color), transparent 40%)
 }
 
-body.rainbow-folders .nav-folder-title-content::before,
+body.rainbow-folders.folder-icons .nav-folder-title-content::before,
 body.rainbow-folders .nav-file-title-content::before {
   content: "";
   display: inline-block;
@@ -4895,13 +4943,13 @@ body.rainbow-folders .nav-file-title:hover .nav-file-title-content::before {
   opacity: 0.9
 }
 
-body.rainbow-folders .nav-folder-title-content::before {
+body.rainbow-folders.folder-icons .nav-folder-title-content::before {
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z'/%3E%3C/svg%3E");
   opacity: 0.8
 }
 
-body.rainbow-folders .nav-folder:not(.is-collapsed)>.nav-folder-title .nav-folder-title-content::before {
+body.rainbow-folders.folder-icons .nav-folder:not(.is-collapsed)>.nav-folder-title .nav-folder-title-content::before {
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2'/%3E%3C/svg%3E");
   opacity: 1
@@ -5025,13 +5073,12 @@ body.rainbow-folders .nav-file-title.is-active .nav-file-title-content::before {
   background-color: var(--background-modifier-hover)
 }
 
-.nav-folder-collapse-indicator,
-.nav-folder .collapse-icon {
+body.folder-icons .nav-folder-collapse-indicator,
+body.folder-icons .nav-folder .collapse-icon {
   display: none !important
 }
 
-@layer phycat-file-icons {
-.nav-folder-title-content::before,
+body.folder-icons .nav-folder-title-content::before,
 .nav-file-title-content::before {
   content: "";
   display: inline-block;
@@ -5057,13 +5104,13 @@ body.rainbow-folders .nav-file-title.is-active .nav-file-title-content::before {
   opacity: 0.9
 }
 
-.nav-folder-title-content::before {
+body.folder-icons .nav-folder-title-content::before {
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z'/%3E%3C/svg%3E");
   opacity: 0.8
 }
 
-.nav-folder:not(.is-collapsed)>.nav-folder-title .nav-folder-title-content::before {
+body.folder-icons .nav-folder:not(.is-collapsed)>.nav-folder-title .nav-folder-title-content::before {
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.55 6a2 2 0 0 1-1.94 1.5H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2'/%3E%3C/svg%3E");
   opacity: 1
@@ -5092,15 +5139,6 @@ body.rainbow-folders .nav-file-title.is-active .nav-file-title-content::before {
 .nav-file-title[data-path$=".base" i] .nav-file-title-content::before {
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cellipse cx='12' cy='5' rx='9' ry='3'/%3E%3Cpath d='M3 5V19A9 3 0 0 0 21 19V5'/%3E%3Cpath d='M3 12A9 3 0 0 0 21 12'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cellipse cx='12' cy='5' rx='9' ry='3'/%3E%3Cpath d='M3 5V19A9 3 0 0 0 21 19V5'/%3E%3Cpath d='M3 12A9 3 0 0 0 21 12'/%3E%3C/svg%3E")
-}
-}
-
-/* If another plugin injects a file/folder icon element, hide the theme fallback pseudo-icon. */
-.nav-file-title-content:has(svg, .svg-icon, .iconize-icon, .nav-file-icon)::before,
-.nav-file-title:has(.nav-file-icon, .iconize-icon) .nav-file-title-content::before,
-.nav-folder-title-content:has(svg, .svg-icon, .iconize-icon, .nav-folder-icon)::before,
-.nav-folder-title:has(.nav-folder-icon, .iconize-icon) .nav-folder-title-content::before {
-  display: none;
 }
 
 .nav-file-title {
