@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phycat 样式预览</title>
+  <link rel="stylesheet" href="preview-base.css">
+  <link rel="stylesheet" href="../theme.css" id="phycat-theme">
+  <link rel="stylesheet" href="preview-layout.css">
+  <script defer src="palette-data.js"></script>
+  <script defer src="palette.js"></script>
+  <script defer src="preview.js"></script>
+</head>
+<body class="theme-light css-settings-manager layout-default h1-align-center h2-style-twin rainbow-folders folder-icons">
+  <div class="app-container">
+    <div class="workspace">
+      <aside class="workspace-split mod-vertical mod-left-split" aria-label="文件侧栏">
+        <div class="workspace-tabs">
+          <div class="workspace-tab-header-container"><div class="workspace-tab-header-container-inner"><div class="workspace-tab-header is-active"><div class="workspace-tab-header-inner">文件</div></div></div></div>
+          <div class="workspace-tab-container"><div class="workspace-leaf"><div class="workspace-leaf-content" data-type="file-explorer"><div class="nav-files-container" id="folder-tree"></div></div></div></div>
+        </div>
+      </aside>
+      <div class="workspace-split mod-vertical mod-root">
+        <div class="workspace-tabs mod-top">
+          <div class="workspace-tab-header-container"><div class="workspace-tab-header-container-inner"><div class="workspace-tab-header is-active"><div class="workspace-tab-header-inner"><div class="workspace-tab-header-inner-title">配色笔记</div></div></div><div class="workspace-tab-header"><div class="workspace-tab-header-inner">工作计划</div></div></div></div>
+          <div class="workspace-tab-container"><div class="workspace-leaf"><div class="workspace-leaf-content" data-type="markdown">
+            <div class="view-header"><span class="view-header-title">配色笔记</span><span class="view-header-actions">阅读视图</span></div>
+            <div class="view-content"><div class="markdown-reading-view"><article class="markdown-preview-view markdown-rendered" tabindex="0" aria-label="笔记样式示例">
+              <div class="markdown-preview-sizer">
+                <h1>给笔记一点颜色</h1>
+                <p>让日常记录成为一个舒适的空间。<a class="internal-link" href="#links">内部链接</a>与 <a class="external-link" href="#links">外部链接</a>，都与这套配色保持一致。</p>
+                <div class="sample-tags"><a class="tag" href="#tasks">#灵感</a> <a class="tag" href="#code">#学习</a> <a class="tag" href="#callouts">#日常记录</a></div>
+                <h2 id="links">把重要的内容留下来</h2>
+                <p>这是<strong>加粗文字</strong>，这是<em>斜体文字</em>，还有 <mark>值得记住的高亮</mark>。<del>不再需要的想法</del>也可以留下一点痕迹。</p>
+                <blockquote><p>每一种颜色，都让同一篇笔记有了不同的气质。</p></blockquote>
+                <h3>三级标题 · 今日灵感</h3><p>尝试将主色用于强调，辅助色用于装饰，让文字和背景保持清楚的层次。</p>
+                <h4>四级标题 · 小小的计划</h4><h5>五级标题 · 一个细节</h5><h6>六级标题 · 补充说明</h6>
+                <h2 id="tasks">任务与清单</h2>
+                <ul class="contains-task-list">
+                  <li class="task-list-item" data-task=" "><input class="task-list-item-checkbox" type="checkbox" aria-label="整理今天的笔记">整理今天的笔记</li>
+                  <li class="task-list-item is-checked" data-task="x"><input class="task-list-item-checkbox" type="checkbox" checked aria-label="完成一个小目标">完成一个小目标</li>
+                  <li class="task-list-item" data-task=" "><input class="task-list-item-checkbox" type="checkbox" aria-label="给新的想法留一点空间">给新的想法留一点空间</li>
+                </ul>
+                <ol><li>记录一个想法</li><li>连接已有的知识<ul><li>寻找共同点</li><li>写下新的问题</li></ul></li><li>继续探索</li></ol>
+                <h2 id="code">代码与键盘</h2>
+                <p>在笔记中使用 <code>palette.primary</code>，按下 <kbd>Ctrl</kbd> + <kbd>S</kbd> 保存。</p>
+                <pre class="language-javascript"><code class="language-javascript"><span class="token comment">// 为每一篇笔记选择合适的颜色</span>
+<span class="token keyword">const</span> <span class="token property">palette</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token property">name</span><span class="token punctuation">:</span> <span class="token string">"My Phycat"</span><span class="token punctuation">,</span>
+  <span class="token property">brightness</span><span class="token punctuation">:</span> <span class="token number">0.85</span>
+<span class="token punctuation">};</span>
+<span class="token keyword">function</span> <span class="token function">createTheme</span><span class="token punctuation">(</span>colors<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> colors<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code><button type="button" class="copy-code-button" aria-label="复制示例代码">复制</button></pre>
+                <h2 id="table">表格中的细节</h2>
+                <div class="table-wrapper"><table><thead><tr><th>元素</th><th>用途</th><th>状态</th></tr></thead><tbody><tr><td>主色</td><td>链接与交互</td><td>已选定</td></tr><tr><td>辅助色</td><td>标题与装饰</td><td>可调整</td></tr><tr><td>背景</td><td>阅读与界面</td><td>自动派生</td></tr></tbody></table></div>
+                <hr>
+                <h2 id="callouts">提示框的不同语气</h2>
+                <div id="callout-samples"></div>
+                <h2 id="details">界面中的颜色</h2>
+                <p>侧栏展示七种彩虹文件夹。点击上方的「界面控件」，查看按钮、输入框、导航选中项和弹窗。</p>
+                <p><small>预览使用本地 Phycat 样式。字体随本机安装情况显示。</small></p>
+              </div>
+            </article></div></div>
+          </div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-container mod-dim" id="interface-modal" hidden role="dialog" aria-modal="true" aria-labelledby="interface-title">
+    <div class="modal-bg"></div><div class="modal">
+      <div class="modal-close-button" role="button" tabindex="0" aria-label="关闭界面控件">×</div>
+      <div class="modal-title" id="interface-title">界面控件</div>
+      <div class="modal-content"><div class="vertical-tabs-container">
+        <div class="vertical-tab-header"><div class="vertical-tab-nav-item is-active">配色设置</div><div class="vertical-tab-nav-item">外观</div><div class="vertical-tab-nav-item">快捷键</div></div>
+        <div class="vertical-tab-content-container"><div class="vertical-tab-content">
+          <h2>Phycat 配色</h2>
+          <div class="setting-item"><div class="setting-item-info"><div class="setting-item-name">配色名称</div><div class="setting-item-description">输入框与边框</div></div><div class="setting-item-control"><input type="text" value="My Phycat" aria-label="示例配色名称"></div></div>
+          <div class="setting-item"><div class="setting-item-info"><div class="setting-item-name">显示装饰</div></div><div class="setting-item-control"><button type="button" class="checkbox-container is-enabled" role="switch" aria-checked="true" aria-label="示例显示装饰"></button></div></div>
+          <div class="setting-item"><div class="setting-item-info"><div class="setting-item-name">阅读模式</div></div><div class="setting-item-control"><select aria-label="示例阅读模式"><option>舒适</option><option>紧凑</option></select></div></div>
+          <div class="setting-item"><div class="setting-item-info"><div class="setting-item-name">调整强度</div></div><div class="setting-item-control"><input type="range" min="0" max="100" value="60" aria-label="示例调整强度"></div></div>
+          <div class="preview-buttons"><button type="button" class="mod-cta" id="sample-save">保存配色</button><button type="button" id="sample-cancel">取消</button></div>
+          <p id="sample-feedback" aria-live="polite"></p>
+        </div></div>
+      </div></div>
+    </div>
+  </div>
+</body>
+</html>

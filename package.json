@@ -4,10 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node scripts/check.mjs",
-    "test": "node scripts/browser-test.mjs",
+    "check": "node scripts/check.mjs && node color-generator/test.cjs",
+    "test": "node scripts/browser-test.mjs && node scripts/generator-browser-test.mjs",
     "build": "node scripts/build.mjs",
-    "release:prepare": "node scripts/prepare-release.mjs"
+    "release:prepare": "node scripts/prepare-release.mjs",
+    "generator:sync": "node color-generator/sync-data.cjs",
+    "generator:test": "node color-generator/test.cjs",
+    "generator:test:browser": "node scripts/generator-browser-test.mjs"
   },
   "engines": {
     "node": ">=22"

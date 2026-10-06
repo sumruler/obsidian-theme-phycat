@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Phycat 主题离线配色工具，实时预览并生成 Style Settings 配色文件。">
+  <title>Phycat 配色生成器</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23172030'/%3E%3Crect x='7' y='7' width='8' height='8' rx='2' fill='%23ff7096'/%3E%3Crect x='17' y='7' width='8' height='8' rx='2' fill='%23bd93f9'/%3E%3Crect x='7' y='17' width='8' height='8' rx='2' fill='%238be9fd'/%3E%3Crect x='17' y='17' width='8' height='8' rx='2' fill='%2350fa7b'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="editor.css">
+  <script defer src="palette-data.js"></script>
+  <script defer src="palette.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><h1>Phycat <span>配色生成器</span></h1></div>
+    <div class="header-meta"><span>本地离线</span><span id="theme-version"></span></div>
+  </header>
+  <main class="workbench">
+    <section class="editor" aria-label="配色编辑">
+      <div class="editor-scroll">
+        <div class="mode-switch" role="group" aria-label="编辑模式">
+          <button type="button" data-mode="light" aria-pressed="true">☀ 亮色</button>
+          <button type="button" data-mode="dark" aria-pressed="false">☾ 暗色</button>
+        </div>
+        <div class="preset-line"><label for="preset">从预设开始</label><button type="button" class="text-button" id="import-button">导入 JSON</button></div>
+        <select id="preset" aria-label="配色预设"></select>
+        <input type="file" id="import-file" accept=".json,application/json" hidden>
+        <div class="section-heading"><h2>基础色</h2><span>其余颜色自动推导</span></div>
+        <div id="core-controls" class="core-grid"></div>
+        <button type="button" id="counterpart" class="outline-button full-width">生成对应的暗色配色</button>
+        <p class="control-hint">亮暗独立保存。生成另一套时保留已锁定的高级颜色。</p>
+        <div id="contrast-checks" class="contrast-checks" aria-label="颜色对比度"></div>
+        <div class="section-heading advanced-heading"><h2>高级颜色 <span id="locked-count"></span></h2><button type="button" class="text-button" id="reset-auto">全部恢复自动</button></div>
+        <p class="control-hint">单独修改会锁定该颜色；点击「自动」重新跟随基础色。</p>
+        <div id="advanced-controls"></div>
+      </div>
+      <footer class="export-panel">
+        <p id="status" role="status" aria-live="polite">正在加载配色…</p>
+        <button type="button" id="export-current" class="primary-button full-width">下载亮色 JSON</button>
+        <div class="export-secondary"><button type="button" id="export-both" class="outline-button">下载亮暗合并</button><button type="button" id="copy-json" class="outline-button">复制当前 JSON</button></div>
+        <p class="export-note">在 Obsidian 的 Style Settings → Import 中导入。</p>
+      </footer>
+    </section>
+    <section class="preview-panel" aria-label="主题样式预览">
+      <div class="preview-toolbar">
+        <div class="preview-title"><span class="eyebrow">实时预览</span><strong id="preview-name">Sakura · 樱花</strong></div>
+        <div class="preview-options">
+          <label>布局<select id="preview-layout"><option value="layout-default">平铺</option><option value="layout-cards">卡片</option></select></label>
+          <label>H1<select id="preview-h1"><option value="h1-align-center">居中</option><option value="h1-align-left">左对齐</option></select></label>
+          <label>H2<select id="preview-h2"><option value="twin">双子塔</option><option value="capsule">胶囊</option></select></label>
+          <label id="accent-text-option" hidden>强调色文字<select id="preview-accent-text"><option value="auto">自动黑白</option><option value="manual">调色盘颜色</option></select></label>
+          <button type="button" id="show-interface" class="outline-button">界面控件</button>
+        </div>
+      </div>
+      <div class="preview-frame-wrap"><iframe id="preview" title="Phycat 主题样式预览" src="preview.html"></iframe><p id="preview-error" hidden role="alert">预览未能加载。请将整个 color-generator 文件夹与 theme.css 保存在一起，然后重新打开。</p></div>
+      <div class="preview-footer"><span id="color-count"></span><span>悬停标题、代码和提示框，查看交互效果</span></div>
+    </section>
+  </main>
+  <dialog id="json-dialog" aria-labelledby="json-title">
+    <div class="dialog-heading"><h2 id="json-title">当前配色 JSON</h2><button type="button" class="outline-button" id="close-json">关闭</button></div>
+    <p>浏览器未允许直接复制。文本已选中，按 Ctrl+C 或 ⌘C 复制。</p>
+    <textarea id="json-text" readonly aria-label="配色 JSON" spellcheck="false"></textarea>
+  </dialog>
+  <noscript>请启用浏览器的 JavaScript 后使用配色生成器。</noscript>
+</body>
+</html>

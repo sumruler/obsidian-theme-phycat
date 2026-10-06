@@ -1,9 +1,17 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
+import { createRequire } from 'node:module';
 import { root, read, json, css, ast, groups, settings, presets, rgb, composite, contrast } from './lib.mjs';
 
 const manifest = json('manifest.json');
+const require = createRequire(import.meta.url);
+const generator = require('../color-generator/palette-data.js');
+assert.equal(generator.version, manifest.version, 'Run npm run generator:sync after changing the version');
+assert.equal(generator.sourceHash, createHash('sha256').update(css).digest('hex'), 'Run npm run generator:sync after changing theme.css');
+assert.equal(generator.fields.length, 194);
+assert.equal(generator.presets.length, 12);
 assert.match(manifest.version, /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/);
 assert.equal(manifest.name, 'Phycat');
 assert.equal(manifest.version, json('package.json').version);

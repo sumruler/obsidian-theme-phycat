@@ -18,4 +18,5 @@ for (const file of ['manifest.json','package.json','package-lock.json']) {
   if (file==='package-lock.json') data.packages[''].version = next;
   fs.writeFileSync(path.join(root,file),JSON.stringify(data,null,2)+'\n');
 }
+execFileSync(process.execPath, ['color-generator/sync-data.cjs'], { cwd: root, stdio: 'inherit' });
 console.log(`Prepared ${current} → ${next}. Run npm run check, npm test and npm run build, then commit and push main with the matching ${next} tag.`);

@@ -14,6 +14,7 @@ Phycat 是一款采用玻璃拟态界面的 Obsidian 主题，提供独立的亮
 
 - **12 套预设**：亮色 Sakura、Mint、Sky、Forest、Mauve、Golden Hour、Cherry、Prussian；暗色 Vampire、Abyss、Radiation、Everforest。
 - **独立调色盘**：基础颜色常驻，代码、提示框、标题装饰等高级分组默认折叠。
+- **离线配色生成器**：四个基础色自动推导整套颜色，支持实时主题预览、亮暗独立编辑及 Style Settings JSON 导入导出。
 - **玻璃与卡片布局**：可选择平铺或悬浮卡片界面。
 - **代码与提示框**：代码块语言标题栏、编辑模式间距设置和胶囊 Callouts。
 - **文件树**：浅色圆角标题行、彩虹文件夹图标、细层级线；文件与文件夹图标分别开关，插件图标优先。
@@ -40,6 +41,17 @@ Obsidian 主题更新器只安装主题核心文件。需要预设时，下载�
 原生 **外观 → 主题色** 优先控制交互和使用主色的装饰；重置后使用各模式的预设主色。其他调色盘颜色保持独立。默认自动计算强调色上的文字颜色；需要自行设置导航、行内代码悬停文字或对勾颜色时，开启 **手动设置强调色上的文字**。
 
 亮色 H2 胶囊使用 **配色设置 → H2 胶囊标题文字**；其他 H2 样式使用 **标题设置 → H2 文字颜色**。
+
+## 离线配色生成器
+
+双击 [color-generator/index.html](color-generator/index.html)，即可在浏览器中调色并预览当前主题。不需要联网、安装依赖或启动服务。完整安装包已包含工具；使用主题自动更新器时，需要另外获取 `color-generator` 文件夹，并将它放在 `theme.css` 旁边。
+
+1. 选择亮色或暗色，从内置预设开始，调整主色、辅助色、背景和文字。未锁定的其他颜色会自动计算。
+2. 在高级分组中微调颜色；手动修改会锁定该项，点击 **自动** 或 **全部恢复自动** 可重新跟随基础色。
+3. **生成对应的亮色／暗色配色** 可生成风格一致的另一套，保留目标模式已锁定的高级颜色。亮暗配色独立保存于当前页面会话，刷新或关闭前请导出。
+4. 下载当前模式的 **194 项 JSON**，或亮暗合并的 **388 项 JSON**，再通过 **Style Settings → Import → Import from file** 导入 Obsidian。复制不可用时会提供可选中的 JSON 文本。
+
+支持导入 HEX、RGB/RGBA、HSL/HSLA 配色。部分配置合并到当前配色，导入颜色作为锁定值保留；无效颜色会取消整次导入。预览直接使用本地 `theme.css`，可切换平铺／卡片、H1 对齐、H2 双子塔／胶囊和界面控件；这些选项不写入配色文件。详细说明见 [调色盘指南](PALETTE.md#离线配色生成器)。
 
 ## 预设
 
@@ -70,6 +82,8 @@ Obsidian 主题更新器只安装主题核心文件。需要预设时，下载�
 ## English
 
 Phycat is a glassmorphism theme for **Obsidian 1.9.0+**, with separate light/dark palettes, 12 JSON presets, flat/card layouts, customizable code blocks, callouts and a rainbow file explorer.
+
+The full theme ZIP includes an offline palette generator. Open `color-generator/index.html` next to `theme.css` to derive colors from four base colors, preview the local theme, lock individual overrides and export 194 settings per mode or 388 for both. No network, server or build is needed to use it. Import the downloaded JSON through Style Settings. Export before refreshing or closing the page.
 
 Install it from **Settings → Appearance → Themes → Manage**. For manual installation, download the full theme ZIP from [Releases](https://github.com/sumruler/obsidian-theme-phycat/releases/latest), extract the `Phycat` directory into your vault's `.obsidian/themes/`, and enable it.
 

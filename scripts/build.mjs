@@ -16,7 +16,7 @@ function addDirectory(dir) {
     if (entry.isDirectory()) addDirectory(file); else files.push(file);
   }
 }
-addDirectory('presets'); addDirectory('licenses');
+addDirectory('presets'); addDirectory('licenses'); addDirectory('color-generator');
 const bytes = file => new Uint8Array(fs.readFileSync(path.join(root,file)));
 const archive = Object.fromEntries(files.map(file => [`Phycat/${file}`,[bytes(file),{mtime:new Date('2026-01-01T00:00:00Z')}]]));
 const zip = zipSync(archive,{level:9});
