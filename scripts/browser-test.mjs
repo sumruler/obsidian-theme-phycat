@@ -45,6 +45,14 @@ try {
     assert.equal((await page.$eval('body',el=>getComputedStyle(el).getPropertyValue('--bg-mix-percent'))).trim(),'90');
     const card=await page.evaluate(()=>{const el=document.createElement('div');el.style.backgroundColor='var(--background-card)';document.body.append(el);const c=getComputedStyle(el).backgroundColor;el.remove();return c;});
     assert.notEqual(card,'rgba(0, 0, 0, 0)',`Missing ${m} card default`);
+    if (m === 'dark') {
+      const note = await page.evaluate(() => {
+        const el = document.createElement('div'); el.style.backgroundColor = 'var(--background-primary)';
+        document.body.append(el); const c = getComputedStyle(el).backgroundColor; el.remove(); return c;
+      });
+      assert.equal(card, note, 'Dark card frame must retain the original note background');
+    }
+    assert.deepEqual((await color('#task-checkbox', 'border-top-color', '::after')).slice(0, 3), [255,255,255], 'Default checkmarks retain the original white color');
     for (const id of ['#url','#url-format','#link-text']) {assert.notEqual(await value(id,'display'),'none');assert.ok(await page.$eval(id,el=>el.getBoundingClientRect().width)>0);}
     assert.notEqual(await value('#html-checkbox','position'),'absolute');
     assert.equal(await value('#task-checkbox','position'),'absolute');
@@ -88,6 +96,14 @@ try {
     for (const selector of ['#nav','#inline']) assert.ok(contrast((await color(selector,selector==='#inline'?'-webkit-text-fill-color':'color')).slice(0,3),(await color(selector,'background-color')).slice(0,3))>=4.5,`${m} ${accent}: ${selector}`);
   }
   report.checks.push('Native accent override and text contrast: 12 light/dark scenarios');
+  // Checkmarks use the saved palette color even when accent text is automatic.
+  for (const m of ['light','dark']) for (const manual of [false,true]) {
+    await mode(m,{[`phycat-colors@@checkmark-color@@${m}`]:'#123456'},`css-settings-manager ${manual?'manual-accent-contrast':''}`);
+    await page.evaluate(() => document.body.style.setProperty('--color-accent', '#ffffff'));
+    assert.deepEqual((await color('#task-checkbox','border-top-color','::after')).slice(0,3),[18,52,86]);
+    assert.deepEqual((await color('#progress-checkbox','background-color','::after')).slice(0,3),[18,52,86]);
+  }
+  report.checks.push('Task checkmarks retain palette colors in both modes and accent text settings');
   // Imports preserve the other mode and unrelated settings by limiting preset keys.
   const first=presets.find(p=>p.file.endsWith('light/mint.json')),second=presets.find(p=>p.file.endsWith('light/sky.json')),dark=presets.find(p=>p.file.endsWith('dark/everforest.json'));
   const combined={...first.data,...dark.data,'phycat-spacing@@p-spacing':'80px',...second.data};

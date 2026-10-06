@@ -38,7 +38,7 @@ Obsidian 主题更新器只安装主题核心文件。需要预设时，下载�
 
 **从 0.2.x 升级后，原配色下拉框不再生效。** 先用 Style Settings 的 Export 备份，再分别导入原先使用的亮暗预设。Ocean 对应 Mint，Cheery 对应 Cherry。具体步骤见 [升级说明](MIGRATION.md) 与 [调色盘指南](PALETTE.md)。
 
-原生 **外观 → 主题色** 优先控制交互和使用主色的装饰；重置后使用各模式的预设主色。其他调色盘颜色保持独立。默认自动计算强调色上的文字颜色；需要自行设置导航、行内代码悬停文字或对勾颜色时，开启 **手动设置强调色上的文字**。
+原生 **外观 → 主题色** 优先控制交互和使用主色的装饰；重置后使用各模式的预设主色。其他调色盘颜色保持独立。导航与行内代码悬停文字默认自动选择黑白；需要自行设置时，开启 **手动设置强调色上的文字**。任务对勾始终直接使用调色盘中的 **复选框对勾** 颜色。
 
 亮色 H2 胶囊使用 **配色设置 → H2 胶囊标题文字**；其他 H2 样式使用 **标题设置 → H2 文字颜色**。
 
@@ -91,6 +91,6 @@ Install it from **Settings → Appearance → Themes → Manage**. For manual in
 
 Import JSON files using **Style Settings → Import → Import from file**. Light and dark presets can be combined independently. The theme updater installs only the core files; download the preset ZIP separately if needed. **When upgrading from 0.2.x, export your settings first and import the presets matching your previous schemes.** Ocean is now named Mint; Cheery is corrected to Cherry.
 
-The native Appearance accent takes priority over the preset primary. Reset it to restore each mode's primary. Accent text chooses black or white automatically; enable **Manual accent text colors** to use custom navigation, inline-code hover and checkmark colors. Light capsule H2 text has its own palette control; other H2 styles use the heading text controls.
+The native Appearance accent takes priority over the preset primary. Reset it to restore each mode's primary. Navigation and inline-code hover text choose black or white automatically; enable **Manual accent text colors** to use their custom palette colors. Task checkmarks always use the palette's checkmark color. Light capsule H2 text has its own palette control; other H2 styles use the heading text controls.
 
 File and folder icons have separate switches and yield to recognized plugin icons. Reduced-motion preferences disable decorative motion. See the [palette guide](PALETTE.md), [migration guide](MIGRATION.md), [changelog](CHANGELOG.md), [MIT license](LICENSE) and [third-party notices](THIRD-PARTY-NOTICES.md).

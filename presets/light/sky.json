@@ -6,7 +6,7 @@
   "phycat-colors@@text-color-secondary@@light": "rgb(10, 17, 18)",
   "phycat-colors@@border-color@@light": "rgba(52, 152, 219, 0.4)",
   "phycat-colors@@select-text-bg-color@@light": "#dce3e9b6",
-  "phycat-colors@@checkmark-color@@light": "#000000",
+  "phycat-colors@@checkmark-color@@light": "#ffffff",
   "phycat-colors@@glow-color@@light": "rgba(52, 152, 219, 0.5)",
   "phycat-colors@@h1-underline-color@@light": "rgb(52, 152, 219)",
   "phycat-colors@@hover-background-color@@light": "rgb(52, 152, 219)",
