@@ -1,72 +1,67 @@
-name: Release Obsidian Theme
+name: Validate and release Phycat
 
 on:
   push:
-    tags:
-      - "[0-9]*" # 当推送以数字开头的标签时触发 (例如 0.1.1)
+    branches: [main]
+    tags: ["[0-9]*"]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
-  contents: write # 需要写入权限来创建 Release
+  contents: read
+
+concurrency:
+  group: phycat-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
-
     steps:
-      # 1. 检出代码
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      # 2. 获取版本号
-      - name: Get version
-        id: get_version
-        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
-
-      # 3. 准备文件夹结构 (核心修改)
-      # 创建 Phycat 文件夹，把文件复制进去，方便用户解压即用
-      - name: Prepare folder structure
-        run: |
-          mkdir Phycat
-          cp manifest.json theme.css Phycat/
-          # 如果有 README 或 LICENSE 也可以复制进去
-          # cp README.md LICENSE Phycat/ 
-
-      # 4. 打包文件夹为 Zip
-      - name: Zip folder
-        run: |
-          zip -r "obsidian-phycat-theme-${{ env.VERSION }}.zip" Phycat
-
-      # 5. 获取 Commit 信息
-      - name: Get Commit Message
-        id: get_commit_message
-        run: |
-          COMMIT_MSG=$(git log -1 --pretty=%B)
-          echo "COMMIT_MSG<<EOF" >> $GITHUB_ENV
-          echo "$COMMIT_MSG" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-
-      # 6. 发布 Release
-      - name: Create Release
-        uses: softprops/action-gh-release@v1
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
-          tag_name: ${{ env.VERSION }}
-          name: Release ${{ env.VERSION }}
-          body: |
-            ## 更新内容
-            
-            ${{ env.COMMIT_MSG }}
-            
-            ---
-            ### 📦 如何安装
-            1. 下载 `obsidian-phycat-theme-${{ env.VERSION }}.zip`。
-            2. 解压得到 `Phycat` 文件夹。
-            3. 将文件夹放入你的 `.obsidian/themes/` 目录下。
-            4. 下载安装字体文件 (`LXGWWenKai-Regular.ttf`)： 👉 [**下载链接 (GitHub)**]([Releases · lxgw/LxgwWenKai](https://github.com/lxgw/LxgwWenKai/releases))。
-            5. 启用主题，设置字体`霞骛文楷`。
-            6. 在Style setting插件中（若没有请安装）选择你喜欢的配色。
-          files: |
-            manifest.json
-            theme.css
-            obsidian-phycat-theme-${{ env.VERSION }}.zip
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci --ignore-scripts
+      - name: Check release version, CSS, settings and presets
+        run: npm run check
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ github.ref_type == 'tag' && github.ref_name || '' }}
+      - run: npx playwright install --with-deps chromium
+      - name: Browser regression checks
+        run: npm test
+      - name: Build and verify release archives
+        run: npm run build
+      - uses: actions/upload-artifact@v7
+        with:
+          name: phycat-release
+          path: dist/
+          if-no-files-found: error
+
+  release:
+    if: github.ref_type == 'tag'
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: phycat-release
+          path: dist/
+      - name: Publish verified assets
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Phycat ${{ github.ref_name }}
+          body_path: dist/release-notes.md
+          fail_on_unmatched_files: true
+          make_latest: true
+          files: |
+            dist/manifest.json
+            dist/theme.css
+            dist/obsidian-phycat-theme-*.zip
+            dist/phycat-presets-*.zip
+            dist/SHA256SUMS

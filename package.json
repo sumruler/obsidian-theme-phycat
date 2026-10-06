@@ -1,0 +1,21 @@
+{
+  "name": "obsidian-theme-phycat",
+  "version": "0.3.3",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "test": "node scripts/browser-test.mjs",
+    "build": "node scripts/build.mjs",
+    "release:prepare": "node scripts/prepare-release.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "fflate": "0.8.3",
+    "js-yaml": "5.4.3",
+    "playwright": "1.63.0",
+    "postcss": "8.5.29"
+  }
+}

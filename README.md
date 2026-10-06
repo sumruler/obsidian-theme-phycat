@@ -1,180 +1,82 @@
-# 🐱 Obsidian Phycat 主题
+# Obsidian Phycat 主题
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/sumruler/obsidian-theme-phycat?style=flat-square)
-![GitHub all releases](https://img.shields.io/github/downloads/sumruler/obsidian-theme-phycat/total?style=flat-square)
+![GitHub release](https://img.shields.io/github/v/release/sumruler/obsidian-theme-phycat?style=flat-square)
+![Downloads](https://img.shields.io/github/downloads/sumruler/obsidian-theme-phycat/total?style=flat-square)
 ![License](https://img.shields.io/github/license/sumruler/obsidian-theme-phycat?style=flat-square)
 
-**Phycat** 是一款充满活力、现代且高度可定制的 Obsidian 主题。它采用“玻璃拟态 (Glassmorphism)”美学设计，配色经过精心调校，旨在提供专注且舒适的视觉体验。
+Phycat 是一款采用玻璃拟态界面的 Obsidian 主题，提供独立的亮暗调色盘、12 套配色预设、卡片布局和彩虹文件夹。最低支持 Obsidian **1.9.0**。
+
+![Phycat 界面示例](screenshot-hd.png)
+
+界面示例；字体、布局和颜色可以按偏好调整。
+
+## 特性
+
+- **12 套预设**：亮色 Sakura、Mint、Sky、Forest、Mauve、Golden Hour、Cherry、Prussian；暗色 Vampire、Abyss、Radiation、Everforest。
+- **独立调色盘**：基础颜色常驻，代码、提示框、标题装饰等高级分组默认折叠。
+- **玻璃与卡片布局**：可选择平铺或悬浮卡片界面。
+- **代码与提示框**：代码块语言标题栏、编辑模式间距设置和胶囊 Callouts。
+- **文件树**：浅色圆角标题行、彩虹文件夹图标、细层级线；文件与文件夹图标分别开关，插件图标优先。
+- **易读性**：默认强调色文字自动选择黑白；任务复选框支持键盘焦点，尊重系统减少动态效果的设置。
+
+## 安装
+
+在 **设置 → 外观 → 主题 → 管理** 中搜索 **Phycat**，安装并启用。
+
+手动安装：从 [Releases](https://github.com/sumruler/obsidian-theme-phycat/releases/latest) 下载 `obsidian-phycat-theme-X.Y.Z.zip`，解压后把 **Phycat** 文件夹放入仓库的 `.obsidian/themes/`，再启用主题。已有文件夹可先备份后替换。
+
+主题本身不依赖插件。未启用 Style Settings 时使用默认亮色 **Sakura**、暗色 **Vampire**。如需调色、导入预设和调整布局，请安装并启用社区插件 **Style Settings**。
+
+推荐字体为 [LXGW WenKai 霞鹜文楷](https://github.com/lxgw/LxgwWenKai/releases)。安装字体后，在 Obsidian 外观中选择文本字体；代码字体跟随 Obsidian 的代码字体设置。字体和 Hover Editor 均为可选项。
+
+## 配色与升级
+
+打开 **Style Settings → Phycat color settings / Phycat 配色设置**，分别设置亮暗颜色。通过顶部 **Import → Import from file** 导入一份预设 JSON；亮暗预设可以任意组合。
+
+Obsidian 主题更新器只安装主题核心文件。需要预设时，下载独立的 `phycat-presets-X.Y.Z.zip` 或完整安装包；也可直接从仓库下载。
+
+**从 0.2.x 升级后，原配色下拉框不再生效。** 先用 Style Settings 的 Export 备份，再分别导入原先使用的亮暗预设。Ocean 对应 Mint，Cheery 对应 Cherry。具体步骤见 [升级说明](MIGRATION.md) 与 [调色盘指南](PALETTE.md)。
+
+原生 **外观 → 主题色** 优先控制交互和使用主色的装饰；重置后使用各模式的预设主色。其他调色盘颜色保持独立。默认自动计算强调色上的文字颜色；需要自行设置导航、行内代码悬停文字或对勾颜色时，开启 **手动设置强调色上的文字**。
+
+亮色 H2 胶囊使用 **配色设置 → H2 胶囊标题文字**；其他 H2 样式使用 **标题设置 → H2 文字颜色**。
+
+## 预设
+
+| 亮色 | 文件 | 暗色 | 文件 |
+| --- | --- | --- | --- |
+| Sakura 樱花 | [sakura.json](presets/light/sakura.json) | Vampire 吸血鬼 | [vampire.json](presets/dark/vampire.json) |
+| Mint 薄荷 | [mint.json](presets/light/mint.json) | Abyss 深渊 | [abyss.json](presets/dark/abyss.json) |
+| Sky 天空 | [sky.json](presets/light/sky.json) | Radiation 辐射 | [radiation.json](presets/dark/radiation.json) |
+| Forest 森林 | [forest.json](presets/light/forest.json) | Everforest 暖绿森林 | [everforest.json](presets/dark/everforest.json) |
+| Mauve 锦葵紫 | [mauve.json](presets/light/mauve.json) | | |
+| Golden Hour 午后黄昏 | [golden.json](presets/light/golden.json) | | |
+| Cherry 樱桃 | [cherry.json](presets/light/cherry.json) | | |
+| Prussian 普鲁士蓝 | [prussian.json](presets/light/prussian.json) | | |
+
+## 反馈与许可证
+
+问题与建议请提交到 [Issues](https://github.com/sumruler/obsidian-theme-phycat/issues)，附上 Obsidian 版本、系统、亮暗模式、布局、相关插件及复现步骤。
+
+本主题采用 [MIT 许可证](LICENSE)。第三方资源及许可见 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)。版本改动见 [CHANGELOG.md](CHANGELOG.md)。
+
+维护与发布步骤见 [DEVELOPMENT.md](DEVELOPMENT.md)，本版 24 项发布检查的处理情况见 [AUDIT-FIXES.md](AUDIT-FIXES.md)。
 
 [![打赏支持](donatebtn.png)](https://www.phycat.cn/donate.html)
 
+![微信支持](wechatpay.png)
+![支付宝支持](alipay.png)
 
-> 🎨 **设计理念**：极简的结构，极致的个性。
+## English
 
-![Theme Screenshot](screenshot-hd.png)
+Phycat is a glassmorphism theme for **Obsidian 1.9.0+**, with separate light/dark palettes, 12 JSON presets, flat/card layouts, customizable code blocks, callouts and a rainbow file explorer.
 
-## ✨以此主题的特性
+Install it from **Settings → Appearance → Themes → Manage**. For manual installation, download the full theme ZIP from [Releases](https://github.com/sumruler/obsidian-theme-phycat/releases/latest), extract the `Phycat` directory into your vault's `.obsidian/themes/`, and enable it.
 
-- **🌈 11 种独特的配色方案**：
-  - **暗色模式**：Vampire (吸血鬼/默认), Abyss (深渊), Radiation (辐射)。
-  - **亮色模式**：Sakura (樱花粉), Ocean (海洋薄荷), Mauve (锦葵紫), Golden Hour (午后黄昏), Cheery (樱桃红), Prussian (普鲁士蓝), Sky (天空蓝), Forest (森林绿)。
-- **💎 玻璃拟态 UI**：侧边栏和模态框拥有微妙的半透明磨砂玻璃效果。
-- **🍬 Mac 风格代码块**：精致的代码块样式，带有红绿灯圆点装饰和清晰的语法高亮。
-- **🎈 悬浮胶囊 Callouts**：重新设计的 Callout（警告/提示块），外观如同悬浮的胶囊，视觉更整洁。
-- **📱 响应式布局**：针对桌面端和移动端的使用体验进行了全面优化。
+**Style Settings is optional** and enables palette imports, layout and spacing controls. Without it, the theme uses Sakura in light mode and Vampire in dark mode. [LXGW WenKai](https://github.com/lxgw/LxgwWenKai/releases) is an optional text font; code uses your Obsidian monospace font.
 
-## 🚀 安装与设置
+Import JSON files using **Style Settings → Import → Import from file**. Light and dark presets can be combined independently. The theme updater installs only the core files; download the preset ZIP separately if needed. **When upgrading from 0.2.x, export your settings first and import the presets matching your previous schemes.** Ocean is now named Mint; Cheery is corrected to Cherry.
 
-为了获得最佳体验（如截图所示），请务必按照以下 4 个步骤操作：
+The native Appearance accent takes priority over the preset primary. Reset it to restore each mode's primary. Accent text chooses black or white automatically; enable **Manual accent text colors** to use custom navigation, inline-code hover and checkmark colors. Light capsule H2 text has its own palette control; other H2 styles use the heading text controls.
 
-### 1. 安装主题
-
-1. 打开 Obsidian **设置 (Settings)** > **外观 (Appearance)** > **主题 (Themes)**。
-2. 点击 **管理 (Manage)**。
-3. 搜索 **"Phycat"**。
-4. 点击 **安装 (Install)** 然后点击 **使用 (Use)**。
-
-### 2. 安装必要插件
-
-本主题依赖 **Style Settings** 插件来实现配色的切换。
-
-1. 进入 **第三方插件 (Community Plugins)** > **浏览 (Browse)**。
-2. 搜索 **"Style Settings"**。
-3. 安装并 **启用 (Enable)** 它。
-
-### 3. 安装推荐字体 (关键步骤!)
-
-Phycat 针对开源字体 **LXGW WenKai (霞鹜文楷)** 进行了特别优化，这能带来最佳的阅读体验。
-
-1. 从官方发布页下载字体文件 (`LXGWWenKai-Regular.ttf`)： 👉 [**下载链接 (GitHub)**]([Releases · lxgw/LxgwWenKai](https://github.com/lxgw/LxgwWenKai/releases))
-2. 在你的操作系统中安装该字体（双击 `.ttf` 文件 > 安装）。
-3. 重启 Obsidian。
-4. 进入 **设置 (Settings)** > **外观 (Appearance)** > **正文字体 (Text Font)**。
-5. 搜索 `LXGW WenKai` 并选中它。
-
-### 4. 配置颜色
-
-1. 进入 **设置 (Settings)** > **Style Settings** > **Phycat Theme Settings**。
-2. 为暗色模式 (Dark Mode) 和亮色模式 (Light Mode) 选择你喜欢的 **配色方案 (Color Scheme)**。
-
-## 🎨 配色方案预览
-
-你可以通过 **Style Settings** 插件即时切换以下风味：
-
-| 亮色模式 (Light) | 描述         | 暗色模式 (Dark) | 描述                    |
-| ---------------- | ------------ | --------------- | ----------------------- |
-| **🌸 Sakura**     | 柔和粉白     | **🧛 Vampire**   | 经典 Dracula 吸血鬼风格 |
-| **🌊 Ocean**      | 薄荷绿与青色 | **🌌 Abyss**     | 深邃午夜蓝              |
-| **🟣 Mauve**      | 优雅兰花紫   | **☢️ Radiation** | 剧毒绿与黑              |
-| **🌅 Golden**     | 暖琥珀与落日 |                 |                         |
-| **🍒 Cheery**     | 活力樱桃红   |                 |                         |
-| **⚓ Prussian**   | 专业普鲁士蓝 |                 |                         |
-| **☁️ Sky**        | 清澈天空蓝   |                 |                         |
-| **🌲 Forest**     | 自然森林绿   |                 |                         |
-
-## 🤝 贡献
-
-发现了 Bug 或有好的建议？欢迎 [提交 Issue](https://github.com/sumruler/obsidian-theme-phycat/issues)。
-
-## 📄 许可证
-
-本主题遵循 MIT 许可证。详情请参阅 [LICENSE](https://www.google.com/search?q=LICENSE) 文件。
-
-## 🍔 捐赠
-
-<img src="wechatpay.png" style="width:250px;" /><img src="alipay.png" alt="alipay" style="width:250px;" />
-
----
-
-*Made with ❤️ by sumruler*
-
-
-
-
-
-# 🐱 Phycat Theme for Obsidian
-
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/sumruler/obsidian-theme-phycat?style=flat-square)
-![GitHub all releases](https://img.shields.io/github/downloads/sumruler/obsidian-theme-phycat/total?style=flat-square)
-![License](https://img.shields.io/github/license/sumruler/obsidian-theme-phycat?style=flat-square)
-
-**Phycat** is a vibrant, modern, and highly customizable theme for Obsidian. It features a "glassmorphism" aesthetic with carefully tuned color palettes designed for focus and visual comfort.
-
-> 🎨 **Design Philosophy**: Minimalist structure with maximum personality.
-
-![Theme Screenshot](screenshot-hd.png)
-
----
-
-## ✨ Features
-
-- **🌈 11 Unique Color Schemes**: 
-    - **Dark Mode**: Vampire (Default), Abyss, Radiation.
-    - **Light Mode**: Sakura (Pink), Ocean (Mint), Mauve (Purple), Golden Hour (Amber), Cheery (Red), Prussian (Deep Blue), Sky, Forest.
-- **💎 Glassmorphism UI**: Subtle transparency and blur effects on sidebars and modals.
-- **🍬 Mac-Style Code Blocks**: Beautifully styled code blocks with traffic light dots and clean syntax highlighting.
-- **🎈 Floating Callouts**: Redesigned callouts (admonitions) that look like floating capsules without clutter.
-- **📱 Responsive Layout**: Optimized for both desktop and mobile usage.
-
----
-
-## 🚀 Installation & Setup
-
-To get the best experience (exactly as shown in the screenshots), please follow these 4 steps:
-
-### 1. Install the Theme
-1. Open Obsidian **Settings** > **Appearance** > **Themes**.
-2. Click **Manage**.
-3. Search for **"Phycat"**.
-4. Click **Install** and then **Use**.
-
-### 2. Install Required Plugin
-This theme relies on the **Style Settings** plugin for color customization.
-1. Go to **Community Plugins** > **Browse**.
-2. Search for **"Style Settings"**.
-3. Install and **Enable** it.
-
-### 3. Install Recommended Font (Crucial!)
-Phycat is optimized for the open-source font **LXGW WenKai (霞鹜文楷)**.
-1. Download the font file (`LXGWWenKai-Regular.ttf`) from the official release:
-   👉 **[Download Link (GitHub)]([Releases · lxgw/LxgwWenKai](https://github.com/lxgw/LxgwWenKai/releases))**
-2. Install the font on your operating system (Double click `.ttf` file > Install).
-3. Restart Obsidian.
-4. Go to **Settings** > **Appearance** > **Text Font**.
-5. Search for `LXGW WenKai` and select it.
-
-### 4. Configure Colors
-1. Go to **Settings** > **Style Settings** > **Phycat Theme Settings**.
-2. Select your preferred **Color Scheme** for Light/Dark mode.
-
----
-
-## 🎨 Color Schemes
-
-You can switch between these flavors instantly via **Style Settings**:
-
-| Light Flavors | Description | Dark Flavors | Description |
-| :--- | :--- | :--- | :--- |
-| **🌸 Sakura** | Soft Pink & White | **🧛 Vampire** | Classic Dracula-inspired |
-| **🌊 Ocean** | Mint Green & Cyan | **🌌 Abyss** | Deep Midnight Blue |
-| **🟣 Mauve** | Elegant Orchid Purple | **☢️ Radiation** | Toxic Green & Black |
-| **🌅 Golden** | Warm Amber & Sunset | | |
-| **🍒 Cheery** | Vibrant Red & Energy | | |
-| **⚓ Prussian** | Professional Deep Blue | | |
-| **☁️ Sky** | Clear Blue | | |
-| **🌲 Forest** | Natural Green | | |
-
----
-
-## 🤝 Contributing
-Found a bug or have a suggestion? Feel free to [open an issue](https://github.com/sumruler/obsidian-theme-phycat/issues).
-
-## 📄 License
-This theme is licensed under the MIT License. See [LICENSE](LICENSE) for more details.
-
-## 🍔Donation
-
-<img src="wechatpay.png" style="width:250px;" /><img src="alipay.png" alt="alipay" style="width:250px;" />
-
----
-*Made with ❤️ by sumruler*
+File and folder icons have separate switches and yield to recognized plugin icons. Reduced-motion preferences disable decorative motion. See the [palette guide](PALETTE.md), [migration guide](MIGRATION.md), [changelog](CHANGELOG.md), [MIT license](LICENSE) and [third-party notices](THIRD-PARTY-NOTICES.md).
