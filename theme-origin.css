@@ -2332,7 +2332,6 @@ settings:
         default: 1.5
 */
 
-
 :root {
   --h3-icon-shape: url("data:image/svg+xml;utf8,<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><path d='M4.571 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM4.571 18.286c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM11.429 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286z'/></svg>");
   --h4-icon-shape: url("data:image/svg+xml;utf8,<svg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'><path d='M4.571 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM4.571 18.286c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM11.429 25.143c-1.257 0-2.286 1.029-2.286 2.286s1.029 2.286 2.286 2.286 2.286-1.029 2.286-2.286-1.029-2.286-2.286-2.286zM11.429 22.857c1.257 0 2.286-1.029 2.286-2.286s-1.029-2.286-2.286-2.286-2.286 1.029-2.286 2.286 1.029 2.286 2.286 2.286z'/></svg>");
@@ -2452,6 +2451,17 @@ body {
     color: var(--code-string);
     text-decoration: underline
   }
+}
+
+html:has(> head > style#css-settings-manager:empty) body>.app-container.no-transition {
+  visibility: hidden
+}
+
+.app-container.no-transition::before,
+.app-container.no-transition::after,
+.app-container.no-transition *::before,
+.app-container.no-transition *::after {
+  transition: none !important
 }
 
 body.theme-light {
@@ -4587,6 +4597,8 @@ body .markdown-source-view.mod-cm6 .HyperMD-header-6 {
   border-radius: 4px;
   font-weight: inherit;
   color: inherit;
+  text-decoration: none;
+  text-shadow: none;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone
 }
@@ -4613,7 +4625,7 @@ body .markdown-source-view.mod-cm6 .HyperMD-header-6 {
 body.theme-light .markdown-preview-view mark:not([style*="background"]),
 body.theme-light .markdown-source-view.mod-cm6 mark:not([style*="background"]),
 body.theme-light .markdown-source-view.mod-cm6 .cm-highlight:not([style*="background"]) {
-  background-image: linear-gradient(to top, color-mix(in srgb, var(--phycat-primary-color), transparent 60%), transparent);
+  background-image: linear-gradient(to top, color-mix(in srgb, var(--phycat-primary-color), transparent 80%), transparent);
   background-size: 100% 40%;
   color: var(--text-normal)
 }
@@ -4622,13 +4634,13 @@ body.theme-light .markdown-preview-view mark:not([style*="background"]):hover,
 body.theme-light .markdown-source-view.mod-cm6 mark:not([style*="background"]):hover,
 body.theme-light .markdown-source-view.mod-cm6 .cm-highlight:not([style*="background"]):hover {
   background-size: 100% 100%;
-  background-image: linear-gradient(to top, color-mix(in srgb, var(--phycat-primary-color), transparent 40%), color-mix(in srgb, var(--phycat-primary-color), transparent 80%))
+  background-image: linear-gradient(to top, color-mix(in srgb, var(--phycat-primary-color), transparent 75%), color-mix(in srgb, var(--phycat-primary-color), transparent 92%))
 }
 
 body.theme-dark .markdown-preview-view mark:not([style*="background"]),
 body.theme-dark .markdown-source-view.mod-cm6 mark:not([style*="background"]),
 body.theme-dark .markdown-source-view.mod-cm6 .cm-highlight:not([style*="background"]) {
-  background-image: linear-gradient(to top, color-mix(in srgb, var(--phycat-primary-color), transparent 50%), transparent) !important;
+  background-image: linear-gradient(to top, color-mix(in srgb, var(--phycat-primary-color), transparent 70%), transparent) !important;
   background-size: 100% 40%;
   color: color-mix(in srgb, var(--phycat-primary-color), white 20%) !important;
   text-shadow: none;
@@ -4639,11 +4651,24 @@ body.theme-dark .markdown-preview-view mark:not([style*="background"]):hover,
 body.theme-dark .markdown-source-view.mod-cm6 mark:not([style*="background"]):hover,
 body.theme-dark .markdown-source-view.mod-cm6 .cm-highlight:not([style*="background"]):hover {
   background-size: 100% 100%;
-  background-image: linear-gradient(to top, color-mix(in srgb, var(--phycat-primary-color), transparent 20%), color-mix(in srgb, var(--phycat-primary-color), transparent 80%)) !important;
+  background-image: linear-gradient(to top, color-mix(in srgb, var(--phycat-primary-color), transparent 65%), color-mix(in srgb, var(--phycat-primary-color), transparent 90%)) !important;
   color: var(--phycat-highlight-hover-color) !important;
-  text-shadow: 0 0 10px var(--phycat-primary-color);
-  box-shadow: 0 0 15px color-mix(in srgb, var(--phycat-primary-color), transparent 80%);
+  text-shadow: none;
+  box-shadow: 0 0 8px color-mix(in srgb, var(--phycat-primary-color), transparent 90%);
   transform: none
+}
+
+body:is(.theme-light, .theme-dark) :is(.markdown-preview-view, .markdown-source-view.mod-cm6) :is(strong, .cm-strong):is(mark, .cm-highlight, mark *, .cm-highlight *, :has(mark:hover, .cm-highlight:hover)):hover {
+  border-bottom-color: transparent;
+  text-shadow: none
+}
+
+body.theme-light :is(.markdown-preview-view, .markdown-source-view.mod-cm6) :is(strong, .cm-strong):is(mark, .cm-highlight, mark *, .cm-highlight *, :has(mark:hover, .cm-highlight:hover)):hover {
+  color: var(--text-bold) !important
+}
+
+body.theme-dark :is(.markdown-preview-view, .markdown-source-view.mod-cm6) :is(strong, .cm-strong):is(mark, .cm-highlight, mark *, .cm-highlight *, :has(mark:hover, .cm-highlight:hover)):hover {
+  color: var(--phycat-highlight-hover-color) !important
 }
 
 .markdown-preview-view strong,
@@ -4696,7 +4721,7 @@ body.theme-light .markdown-source-view.mod-cm6 strong:hover {
   background-repeat: repeat-x;
   background-position: 0 100%, 0 calc(100% - 2px);
   background-size: 16px 2px;
-  background-image: radial-gradient(circle at 4px -7.5px, transparent 8px, var(--phycat-italic-wave-color) 8.333px, var(--phycat-italic-wave-color) 8.667px, transparent 9px), radial-gradient(circle at 12px 9.5px, transparent 8px, var(--phycat-italic-wave-color) 8.333px, var(--phycat-italic-wave-color) 8.667px, transparent 9px);
+  background-image: radial-gradient(circle at 4px -7.5px, transparent calc(8.5px - var(--phycat-italic-wave-half-width, 0.5px)), var(--phycat-italic-wave-color) calc(8.833px - var(--phycat-italic-wave-half-width, 0.5px)), var(--phycat-italic-wave-color) calc(8.167px + var(--phycat-italic-wave-half-width, 0.5px)), transparent calc(8.5px + var(--phycat-italic-wave-half-width, 0.5px))), radial-gradient(circle at 12px 9.5px, transparent calc(8.5px - var(--phycat-italic-wave-half-width, 0.5px)), var(--phycat-italic-wave-color) calc(8.833px - var(--phycat-italic-wave-half-width, 0.5px)), var(--phycat-italic-wave-color) calc(8.167px + var(--phycat-italic-wave-half-width, 0.5px)), transparent calc(8.5px + var(--phycat-italic-wave-half-width, 0.5px)));
   transition: color 0.2s ease, -webkit-text-stroke 0.2s ease, text-shadow 0.2s ease;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone
@@ -4750,6 +4775,18 @@ body.theme-dark .markdown-source-view.mod-cm6 em:hover {
   -webkit-text-stroke: 0.5px var(--phycat-primary-color);
   text-shadow: var(--glow-shadow-text);
   animation: phycatItalicWaveFlow 0.8s linear infinite
+}
+
+body:is(.theme-light, .theme-dark) :is(.markdown-preview-view, .markdown-source-view.mod-cm6) :is(strong, .cm-strong):is(em, .cm-em, em *, .cm-em *, :has(em:hover, .cm-em:hover)):hover {
+  border-bottom-color: transparent;
+  -webkit-text-stroke: 0;
+  text-shadow: none
+}
+
+body:is(.theme-light, .theme-dark) :is(.markdown-preview-view, .markdown-source-view.mod-cm6) :is(em, .cm-em):is(strong, .cm-strong, strong *, .cm-strong *, :has(strong:hover, .cm-strong:hover)):hover {
+  --phycat-italic-wave-half-width: 1px;
+  -webkit-text-stroke: 0;
+  text-shadow: none
 }
 
 @media (prefers-reduced-motion:reduce) {
@@ -6052,6 +6089,10 @@ body.theme-light .markdown-source-view.mod-cm6 kbd:hover {
   -webkit-backdrop-filter: blur(20px) saturate(120%);
   border: 1px solid var(--phycat-modal-border);
   box-shadow: 0 10px 40px -5px var(--phycat-modal-box-shadow-2)
+}
+
+body:not(.is-phone) .modal.mod-settings .vertical-tab-content {
+  background-color: transparent
 }
 
 .modal-close-button {
