@@ -10,6 +10,8 @@ Phycat 是一款采用玻璃拟态界面的 Obsidian 主题，提供独立的亮
 
 界面示例；字体、布局和颜色可以按偏好调整。
 
+❤️❤️❤️推荐使用Phycat[主题配色生成器](https://sumruler.github.io/obsidian-theme-phycat/color-generator/index.html)❤️❤️❤️
+
 ## 特性
 
 - **12 套预设**：亮色 Sakura、Mint、Sky、Forest、Mauve、Golden Hour、Cherry、Prussian；暗色 Vampire、Abyss、Radiation、Everforest。
@@ -33,6 +35,8 @@ Phycat 是一款采用玻璃拟态界面的 Obsidian 主题，提供独立的亮
 ## 配色与升级
 
 打开 **Style Settings → Phycat color settings / Phycat 配色设置**，分别设置亮暗颜色。通过顶部 **Import → Import from file** 导入一份预设 JSON；亮暗预设可以任意组合。
+
+推荐使用Phycat[主题配色生成器](https://sumruler.github.io/obsidian-theme-phycat/color-generator/index.html)
 
 Obsidian 主题更新器只安装主题核心文件。需要预设时，下载独立的 `phycat-presets-X.Y.Z.zip` 或完整安装包；也可直接从仓库下载。
 
