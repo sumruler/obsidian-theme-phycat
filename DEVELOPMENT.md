@@ -28,8 +28,9 @@ npm run build
 1. 在 `releases/X.Y.Z.md` 写好版本说明，第一行使用 `# Phycat X.Y.Z`；同步更新 CHANGELOG。
 2. 运行 `npm run release:prepare -- X.Y.Z`。脚本校验版本递增与标签未存在，再同步 manifest、package、lockfile 及生成器数据。
 3. 执行上述验证、浏览器测试和构建，检查文件清单及 SHA256SUMS。
-4. 提交到 `main`，创建与 manifest 一致的 `X.Y.Z` 标签（不加 `v`），推送分支和标签。
-5. 检查 GitHub Actions 的验证与发布结果，再检查 Releases 的实际下载文件。
+4. 在本地 `main` 提交，创建与 manifest 一致的 `X.Y.Z` 标签（不加 `v`），先推送标签。此时远程 `main` 继续指向已有匹配 Release 的版本。
+5. 等待标签对应的 GitHub Actions 验证与发布成功，检查 Releases 的实际下载文件，确认 `manifest.json`、`theme.css` 和校验文件完整且匹配构建结果。
+6. 确认 Release 已公开发布后再推送 `main`，让社区目录读取到完整的新版本。若发布失败，先修复发布问题，保持远程默认分支的版本与已有 Release 匹配。
 
 分支推送与 PR 只验证；数字开头的标签触发发布，并且必须完整匹配 manifest 版本。发布说明来自版本文件，不从提交消息拼接 shell 命令。发布任务只有在验证完成后获得仓库写权限。
 

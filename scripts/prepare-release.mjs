@@ -19,4 +19,4 @@ for (const file of ['manifest.json','package.json','package-lock.json']) {
   fs.writeFileSync(path.join(root,file),JSON.stringify(data,null,2)+'\n');
 }
 execFileSync(process.execPath, ['color-generator/sync-data.cjs'], { cwd: root, stdio: 'inherit' });
-console.log(`Prepared ${current} → ${next}. Run npm run check, npm test and npm run build, then commit and push main with the matching ${next} tag.`);
+console.log(`Prepared ${current} → ${next}. Run npm run check, npm test and npm run build, then commit locally and push the matching ${next} tag. Verify the published release assets before pushing main.`);
