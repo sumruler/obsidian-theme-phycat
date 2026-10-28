@@ -12,6 +12,14 @@ Phycat 是一款采用玻璃拟态界面的 Obsidian 主题，提供独立的亮
 
 ❤️❤️❤️推荐使用Phycat[主题配色生成器](https://sumruler.github.io/obsidian-theme-phycat/color-generator/index.html)❤️❤️❤️
 
+## 0.3.8 编辑与高亮兼容更新
+
+- **标题点击定位**：编辑模式的 H1–H6 保持完整行宽，上下间距计入行内布局，装饰不遮挡点击。H2 胶囊在编辑时铺满标题行，阅读时仍是短胶囊；H1 对齐和现有间距选项继续生效。
+- **六色渐变高亮**：支持 Obsidian 1.14 的 `==🔴红色==`、`==🟠橙色==`、`==🟡黄色==`、`==🟢绿色==`、`==🔵蓝色==`、`==🟣紫色==`，保留渐变和悬停效果。普通 `==高亮==` 继续跟随主题色，原生选色菜单和行内色块可正常使用；旧版 Obsidian 继续支持普通高亮。
+- **Callout 图标兼容**：使用原生图标及类型映射，图标继承标题颜色，保留 SVG 自身的填充方式；胶囊标题、右侧水印和折叠功能继续保留。配色预览也使用真实 SVG 图标。
+
+更新无需迁移 Style Settings 配置或修改笔记内容。完整保留已有配色、字号、对齐及间距设置。
+
 ## 特性
 
 - **12 套预设**：亮色 Sakura、Mint、Sky、Forest、Mauve、Golden Hour、Cherry、Prussian；暗色 Vampire、Abyss、Radiation、Everforest。

@@ -34,6 +34,8 @@ try {
   await frame.waitForFunction(() => document.body.classList.contains('css-settings-manager'));
   assert.equal(await page.locator('#preview-error').isVisible(), false);
   assert.equal(await frame.locator('.callout').count(), 17);
+  assert.equal(await frame.locator('.callout-icon svg').count(), 17, 'Callout previews must render real SVG icons');
+  assert.equal(await frame.locator('mark[data-highlight]').count(), 6, 'Preview must contain all native highlight colors');
   assert.equal(await frame.locator('.nav-folder').count(), 7);
   assert.ok(await frame.evaluate(() => document.querySelector('#phycat-theme').sheet !== null));
   for (const preset of data.presets) {

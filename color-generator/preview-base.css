@@ -1,4 +1,71 @@
 /* Minimal app foundations; the theme supplies component colors and decoration. */
+/* Obsidian 1.14 foundations for native highlight colors and SVG Callout icons. */
+.theme-light {
+  --color-red: #e93147;
+  --color-orange: #ec7500;
+  --color-yellow: #e0ac00;
+  --color-green: #08b94e;
+  --color-cyan: #00bfbc;
+  --color-blue: #086ddd;
+  --color-purple: #7852ee;
+}
+.theme-dark {
+  --color-red: #fb464c;
+  --color-orange: #e9973f;
+  --color-yellow: #e0de71;
+  --color-green: #44cf6e;
+  --color-cyan: #53dfdd;
+  --color-blue: #027aff;
+  --color-purple: #a882ff;
+}
+body {
+  --highlight-opacity: 30%;
+  --highlight-background: var(--text-highlight-bg, var(--highlight-background-yellow));
+  --highlight-background-red: color-mix(in oklch, var(--color-red) var(--highlight-opacity), transparent);
+  --highlight-background-orange: color-mix(in oklch, var(--color-orange) var(--highlight-opacity), transparent);
+  --highlight-background-yellow: color-mix(in oklch, var(--color-yellow) var(--highlight-opacity), transparent);
+  --highlight-background-green: color-mix(in oklch, var(--color-green) var(--highlight-opacity), transparent);
+  --highlight-background-blue: color-mix(in oklch, var(--color-blue) var(--highlight-opacity), transparent);
+  --highlight-background-purple: color-mix(in oklch, var(--color-purple) var(--highlight-opacity), transparent);
+  --callout-bug: var(--color-red);
+  --callout-default: var(--color-blue);
+  --callout-error: var(--color-red);
+  --callout-example: var(--color-purple);
+  --callout-fail: var(--color-red);
+  --callout-important: var(--color-cyan);
+  --callout-info: var(--color-blue);
+  --callout-question: var(--color-orange);
+  --callout-success: var(--color-green);
+  --callout-summary: var(--color-cyan);
+  --callout-tip: var(--color-cyan);
+  --callout-todo: var(--color-blue);
+  --callout-warning: var(--color-orange);
+  --callout-quote: #9e9e9e;
+}
+.markdown-rendered mark { background-color: var(--highlight-background); color: var(--text-normal); }
+.markdown-rendered mark[data-highlight="red"] { --highlight-background: var(--highlight-background-red); }
+.markdown-rendered mark[data-highlight="orange"] { --highlight-background: var(--highlight-background-orange); }
+.markdown-rendered mark[data-highlight="yellow"] { --highlight-background: var(--highlight-background-yellow); }
+.markdown-rendered mark[data-highlight="green"] { --highlight-background: var(--highlight-background-green); }
+.markdown-rendered mark[data-highlight="blue"] { --highlight-background: var(--highlight-background-blue); }
+.markdown-rendered mark[data-highlight="purple"] { --highlight-background: var(--highlight-background-purple); }
+.callout { --callout-color: var(--callout-default); }
+.callout[data-callout="abstract"], .callout[data-callout="summary"], .callout[data-callout="tldr"] { --callout-color: var(--callout-summary); }
+.callout[data-callout="info"] { --callout-color: var(--callout-info); }
+.callout[data-callout="todo"] { --callout-color: var(--callout-todo); }
+.callout[data-callout="important"] { --callout-color: var(--callout-important); }
+.callout[data-callout="tip"], .callout[data-callout="hint"] { --callout-color: var(--callout-tip); }
+.callout[data-callout="success"], .callout[data-callout="check"], .callout[data-callout="done"] { --callout-color: var(--callout-success); }
+.callout[data-callout="question"], .callout[data-callout="help"], .callout[data-callout="faq"] { --callout-color: var(--callout-question); }
+.callout[data-callout="warning"], .callout[data-callout="caution"], .callout[data-callout="attention"] { --callout-color: var(--callout-warning); }
+.callout[data-callout="failure"], .callout[data-callout="fail"], .callout[data-callout="missing"] { --callout-color: var(--callout-fail); }
+.callout[data-callout="danger"], .callout[data-callout="error"] { --callout-color: var(--callout-error); }
+.callout[data-callout="bug"] { --callout-color: var(--callout-bug); }
+.callout[data-callout="example"] { --callout-color: var(--callout-example); }
+.callout[data-callout="quote"], .callout[data-callout="cite"] { --callout-color: var(--callout-quote); }
+.callout-icon { flex: 0 0 auto; display: flex; align-items: center; }
+.callout-icon .svg-icon { color: var(--callout-color); }
+.callout-icon::after { content: "\200B"; }
 :root{font-size:16px}*{box-sizing:border-box}html,body{margin:0;height:100%}body{font-family:"LXGW WenKai","Segoe UI","Microsoft YaHei",sans-serif;color:var(--text-normal);background:var(--background-primary);font-size:16px;--font-text:"LXGW WenKai","Segoe UI","Microsoft YaHei",sans-serif;--font-interface:"Segoe UI","Microsoft YaHei",sans-serif;--font-monospace:"Cascadia Code",Consolas,monospace;--font-text-size:16px;--font-smaller:14px;--font-smallest:12px;--font-ui-small:14px;--font-ui-smaller:13px;--font-ui-medium:16px;--font-ui-large:18px;--line-height-normal:1.6;--line-height-tight:1.3;--p-spacing:1rem;--size-4-1:4px;--size-4-2:8px;--size-4-3:12px;--size-4-4:16px;--size-4-6:24px;--size-4-8:32px;--size-2-1:2px;--size-2-2:4px;--radius-s:4px;--radius-m:8px;--radius-l:12px;--input-height:34px;--input-radius:6px;--input-border-width:1px;--nav-item-size:14px;--nav-item-color:var(--text-muted);--nav-item-color-hover:var(--text-normal);--nav-item-color-active:var(--text-normal);--nav-item-background-hover:var(--background-modifier-hover);--nav-item-background-active:var(--background-modifier-active-hover);--nav-item-padding:5px 8px;--nav-item-weight:400;--nav-item-weight-hover:400;--nav-item-weight-active:600;--nav-item-white-space:nowrap;--text-on-accent:#fff;--bold-weight:700;--code-border-width:0px;--code-border-color:transparent;--scrollbar-bg:transparent;--background-modifier-cover:rgba(0,0,0,.4);--background-modifier-box-shadow:rgba(0,0,0,.12);--icon-size:18px;--icon-color:var(--text-muted);--icon-color-hover:var(--text-normal);--icon-stroke:1.8;--tag-size:.875rem;--tag-padding-x:.65em;--tag-padding-y:.15em;--tag-radius:2em;--tag-border-width:1px}
 body.theme-light{--mono-rgb-100:0,0,0;--mono-rgb-0:255,255,255;--color-base-00:#fff;--color-base-10:#fafafa;--color-base-20:#f0f0f0;--color-base-30:#e0e0e0;--color-base-40:#bdbdbd;--color-base-70:#5c5c5c;--color-base-100:#222;--color-accent:hsl(var(--accent-h),var(--accent-s),var(--accent-l));--color-accent-1:hsl(calc(var(--accent-h) - 1),calc(var(--accent-s) * 1.01),calc(var(--accent-l) * 1.075));--color-accent-2:hsl(calc(var(--accent-h) - 3),calc(var(--accent-s) * 1.02),calc(var(--accent-l) * 1.15))}
 body.theme-dark{--mono-rgb-100:255,255,255;--mono-rgb-0:0,0,0;--color-base-00:#1e1e1e;--color-base-10:#242424;--color-base-20:#262626;--color-base-30:#363636;--color-base-40:#555;--color-base-70:#aaa;--color-base-100:#eee;--color-accent:hsl(var(--accent-h),var(--accent-s),var(--accent-l));--color-accent-1:hsl(calc(var(--accent-h) - 1),calc(var(--accent-s) * 1.01),calc(var(--accent-l) * 1.075));--color-accent-2:hsl(calc(var(--accent-h) - 3),calc(var(--accent-s) * 1.02),calc(var(--accent-l) * 1.15))}

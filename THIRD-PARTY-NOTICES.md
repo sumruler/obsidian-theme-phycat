@@ -4,7 +4,7 @@ Phycat 自身采用 MIT 许可证，见 [LICENSE](LICENSE)。
 
 ## Lucide 图标
 
-文件、文件夹、图像、Canvas 和数据库的 SVG 遮罩使用 [Lucide](https://github.com/lucide-icons/lucide) 图标路径。Lucide 使用 ISC 许可证，部分图标继承 Feather 的 MIT 许可。完整版权和许可文本保存在 [licenses/Lucide-LICENSE](licenses/Lucide-LICENSE)。
+文件、文件夹、图像、Canvas 和数据库的 SVG 遮罩，以及 Callout 配色预览的 SVG 图标，使用 [Lucide](https://github.com/lucide-icons/lucide) 图标路径。Lucide 使用 ISC 许可证，部分图标继承 Feather 的 MIT 许可。完整版权和许可文本保存在 [licenses/Lucide-LICENSE](licenses/Lucide-LICENSE)。
 
 ## Everforest 配色
 
