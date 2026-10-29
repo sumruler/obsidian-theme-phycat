@@ -44,5 +44,41 @@ try {
     const icon = await page.locator('#callout-svg').evaluate(el => ({ fill: getComputedStyle(el).fill, color: getComputedStyle(el).color, title: getComputedStyle(el.closest('.callout-title')).color }));
     assert.equal(icon.fill, 'none', 'Outline SVGs must retain their native fill'); assert.equal(icon.color, icon.title);
   }
-  console.log('0.3.8 compatibility passed: full-width editable headings, compact reading capsules, six independent highlight colors, native UI exclusions and Callout SVG fills in both modes.');
+  // Exercise the text fragments CodeMirror uses for mixed and wrapped headings.
+  const fragmentMarkup = '<div class="markdown-source-view mod-cm6"><div class="cm-s-obsidian"><div class="cm-content">'
+    + '<div class="cm-line HyperMD-header HyperMD-header-2" id="mixed-heading"><span class="cm-header-2">Heading </span><span class="cm-header-2 cm-strong">bold </span><span class="cm-header-2 cm-link"><span class="cm-underline">link</span></span><span class="cm-header-2 external-link" id="empty-link"></span></div>'
+    + '<div class="cm-line HyperMD-header HyperMD-header-2" id="wrapped-heading"><span class="cm-header-2">' + 'Long heading with words that wrap naturally. '.repeat(8) + '</span></div>'
+    + '<div class="cm-line HyperMD-header HyperMD-header-2" id="highlight-heading"><span class="cm-header-2 cm-highlight cm-highlight-blue">Highlighted heading</span></div>'
+    + '</div></div></div><div class="workspace-ribbon mod-left" id="ribbon-left"></div><div class="workspace-ribbon mod-primary" id="ribbon-primary"></div><div id="frame-color" style="background-color:var(--background-card)"></div>';
+  await page.setContent('<style>' + foundation + '</style><style>' + css + '</style><style>' + host + '</style>' + fragmentMarkup);
+  for (const mode of ['light', 'dark']) {
+    await page.evaluate(mode => { document.body.className = 'theme-' + mode + ' layout-cards ' + (mode === 'light' ? 'h2-style-' : 'h2-style-dark-') + 'capsule'; }, mode);
+    const heading = await page.locator('#mixed-heading').evaluate(el => {
+      const line = el.getBoundingClientRect(), fragments = [...el.querySelectorAll(':scope > .cm-header-2:not(:empty)')];
+      return { lineWidth: line.width, parentWidth: el.parentElement.getBoundingClientRect().width, lineBackground: getComputedStyle(el).backgroundImage,
+        textWidth: fragments.at(-1).getBoundingClientRect().right - fragments[0].getBoundingClientRect().left,
+        gradients: fragments.map(s => getComputedStyle(s).backgroundImage) };
+    });
+    assert.equal(heading.lineWidth, heading.parentWidth, 'Text-width capsules must retain full-line click targets');
+    assert.ok(heading.textWidth < heading.lineWidth / 2, 'Short editor capsules should follow text width');
+    assert.equal(heading.lineBackground, 'none', 'The empty part of the editor line must not be painted as a capsule');
+    assert.ok(heading.gradients.every(g => g !== 'none' && g === heading.gradients[0]), 'Formatted heading fragments must share one gradient');
+    const wrapped = await page.locator('#wrapped-heading > span').evaluate(el => { const text = document.createRange(); text.selectNodeContents(el); return { rects: [...el.getClientRects()].map(r => ({ width: r.width, top: r.top })), textWidths: [...text.getClientRects()].map(r => r.width), lineWidth: el.parentElement.getBoundingClientRect().width, parentWidth: el.parentElement.parentElement.getBoundingClientRect().width }; });
+    assert.ok(new Set(wrapped.rects.map(r => r.top)).size > 1, 'Long editor capsules must wrap');
+    assert.equal(wrapped.lineWidth, wrapped.parentWidth, 'Wrapping must not widen the editor line');
+    // Text ranges exclude the cloned capsule padding around each wrapped fragment.
+    assert.ok(wrapped.textWidths.every(width => width <= wrapped.lineWidth + 1), 'Wrapped heading text must fit the editor: ' + JSON.stringify({mode,...wrapped}));
+    const empty = await page.locator('#empty-link').evaluate(el => ({ width: el.getBoundingClientRect().width, padding: getComputedStyle(el).padding }));
+    assert.equal(empty.width, 0, 'An empty link token must not leave a gap in the capsule');
+    const highlight = await page.locator('#highlight-heading > span').evaluate(el => getComputedStyle(el).backgroundImage);
+    assert.ok(highlight.includes('), linear-gradient('), 'Heading highlights must retain both highlight and capsule backgrounds');
+    await page.locator('#highlight-heading > span').hover();
+    assert.equal(await page.locator('#highlight-heading > span').evaluate(el => getComputedStyle(el).backgroundSize), '100% 100%, 100% 100%');
+    if (mode === 'light') {
+      const frame = await page.locator('#frame-color').evaluate(el => getComputedStyle(el).backgroundColor);
+      for (const id of ['#ribbon-left', '#ribbon-primary']) assert.equal(await page.locator(id).evaluate(el => getComputedStyle(el, '::before').backgroundColor), frame, 'The complete upper-left corner must match the light card frame');
+    }
+    await page.mouse.move(0, 0);
+  }
+  console.log('Compatibility passed: editable heading click targets, text-width and wrapped capsules, formatted heading highlights, light card corners, six native highlight colors and Callout SVG fills.');
 } finally { await browser.close(); }
